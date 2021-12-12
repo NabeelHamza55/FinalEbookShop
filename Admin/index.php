@@ -1,7 +1,7 @@
 <?php
 $title = 'Dashboard';
-include('HTML_Start.php');
-include('header.php');
+include('./components/HTML_Start.php');
+include('./components/header.php');
 ?>
 
 <h1 class="mt-4">Dashboard</h1>
@@ -108,6 +108,6 @@ include('header.php');
 </div>
 
 <?php
-include('footer.php');
-include('HTML_End.php');
+include('./components/footer.php');
+include('./components/HTML_End.php');
   ?>
