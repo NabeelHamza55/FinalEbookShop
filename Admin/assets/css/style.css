@@ -4,6 +4,16 @@
     box-sizing: border-box;
 }
 
-body {
-    background: blue;
+.form-control {
+    outline: none;
+}
+
+.form-control:focus,
+.form-control:active {
+    outline: none;
+}
+
+.col-6,
+.col-4 {
+    padding: 5px 10px;
 }
