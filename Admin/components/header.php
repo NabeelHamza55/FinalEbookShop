@@ -41,7 +41,7 @@
                         Dashboard
                     </a>
                     <div class="sb-sidenav-menu-heading">Manage Books</div>
-                    <a class="nav-link" href="">
+                    <a class="nav-link" href="./bookList.php">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                         Books
                     </a>

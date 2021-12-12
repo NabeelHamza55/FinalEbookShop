@@ -13,7 +13,7 @@ include('./components/header.php');
 <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
         <h4 class="card-title">Book List</h4>
-        <a href="#" class="btn btn-primary">Add Book</a>
+        <a href="./bookAdd.php" class="btn btn-primary">Add Book</a>
     </div>
     <div class="card-body">
         <table class="table table-responsive table-hover" id="datatablesSimple">
