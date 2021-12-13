@@ -1,6 +1,6 @@
 <?php
      $title = 'Login';
-     include('./Admin/HTML_Start.php');
+     include('./Admin/components/HTML_Start.php');
      include('./functions/_login.php');
      login();
      if (isset($_SESSION['login'])) {
@@ -66,4 +66,4 @@
         </main>
     </div>
 
-    <?php include('./Admin/HTML_End.php') ?>
+    <?php include('./Admin//components/HTML_End.php') ?>
