@@ -1,6 +1,6 @@
 <?php
      $title = 'Register';
-     include('./Admin/HTML_Start.php');
+     include('./Admin/components/HTML_Start.php');
      include('./functions/_signup.php');
      register();
      if (isset($_SESSION['login'])) {
@@ -98,4 +98,4 @@
         </main>
     </div>
 
-    <?php include('./Admin/HTML_End.php') ?>
+    <?php include('./Admin/components/HTML_End.php') ?>
