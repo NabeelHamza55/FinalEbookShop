@@ -14,12 +14,12 @@ include('functions/db.php');
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous">
-    </script>
 
-    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+    <link href="/Admin/assets/css/databtable.css" rel="stylesheet" />
     <link href="/Admin/assets/css/styles.css" rel="stylesheet" />
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="/Admin/assets/css/style.css">
+    <script src="/Admin/assets/js/FontAwesome.js" crossorigin="anonymous">
+    </script>
     <title><?php echo $title ?></title>
 </head>
 
