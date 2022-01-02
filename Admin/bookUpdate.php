@@ -1,5 +1,5 @@
 <?php
-$title = 'Dashboard';
+$title = 'Update Book';
 include('./components/HTML_Start.php');
 include('./components/header.php');
 ?>
@@ -8,7 +8,7 @@ include('./components/header.php');
 <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item">Dashboard</li>
     <li class="breadcrumb-item">books</li>
-    <li class="breadcrumb-item active">Add books</li>
+    <li class="breadcrumb-item active">Update books</li>
 </ol>
 
 <div class="card">
