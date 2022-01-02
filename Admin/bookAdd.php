@@ -1,5 +1,5 @@
 <?php
-$title = 'Dashboard';
+$title = 'Add Book';
 include('./components/HTML_Start.php');
 include('./components/header.php');
 ?>

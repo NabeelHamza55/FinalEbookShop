@@ -4,15 +4,17 @@
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
             class="fas fa-bars"></i></button>
 
-    <!-- Search -->
-    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+    <!--  Search -->
+    <!-- <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
         <div class="input-group">
             <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."
                 aria-describedby="btnNavbarSearch" />
             <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
         </div>
-    </form>
+    </form> -->
+    <div class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
 
+    </div>
     <!-- Navbar-->
     <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
         <li class="nav-item dropdown">
@@ -42,8 +44,24 @@
                     </a>
                     <div class="sb-sidenav-menu-heading">Manage Books</div>
                     <a class="nav-link" href="./bookList.php">
-                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                        <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                         Books
+                    </a>
+                    <a class="nav-link" href="./seriesList.php">
+                        <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                        Series
+                    </a>
+                    <a class="nav-link" href="./authorList.php">
+                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                        Authors
+                    </a>
+                    <a class="nav-link" href="./generList.php">
+                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                        Geners
+                    </a>
+                    <a class="nav-link" href="./publisherList.php">
+                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                        Publishers
                     </a>
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
                         aria-expanded="false" aria-controls="collapsePages">

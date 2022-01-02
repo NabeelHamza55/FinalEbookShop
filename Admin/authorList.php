@@ -1,19 +1,19 @@
 <?php
-$title = 'Books List';
+$title = 'Authors List';
 include('./components/HTML_Start.php');
 include('./components/header.php');
 ?>
 
-<h1 class="mt-4">Books</h1>
+<h1 class="mt-4">Authors</h1>
 <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item">Dashboard</li>
-    <li class="breadcrumb-item active">books</li>
+    <li class="breadcrumb-item active">Authors</li>
 </ol>
 
 <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
-        <h4 class="card-title">Book List</h4>
-        <a href="./bookAdd.php" class="btn btn-primary">Add Book</a>
+        <h4 class="card-title">Author List</h4>
+        <a href="./authorAdd.php" class="btn btn-primary">Add Author</a>
     </div>
     <div class="card-body">
         <table class="table table-responsive table-hover" id="datatablesSimple">
