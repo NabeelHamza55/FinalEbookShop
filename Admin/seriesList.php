@@ -21,18 +21,11 @@ $list = fetchSeries();
     </div>
     <div class="card-body">
         <div class="text-center bg-success rounded">
-            <?php //if(isset($_SESSION['status'])) { ?>
+            <?php if(!empty($msg['status'])) { ?>
             <p class="lead mt-1 text-light">
-                <?php
-                if (isset($_SESSION['flash_message'])) {
-                    $message = $_SESSION['flash_message'];
-                    unset($_SESSION['flash_message']);
-                    echo $message;
-                }
-               ?>
+                <?= $msg['status'] ?>
             </p>
-            <?php //}
-                    // unset($_SESSION['status']);
+            <?php }
                ?>
         </div>
         <table class="table table-responsive table-hover" id="datatablesSimple">
@@ -50,7 +43,7 @@ $list = fetchSeries();
                     <td colspan="4">No Series Found</td>
                 </tr>
                 <?php  }else{
-                $sr = 0;
+                $sr = 1;
                 while($series = mysqli_fetch_assoc($list)) {
                 ?>
                 <tr>
