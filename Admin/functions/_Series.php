@@ -1,7 +1,7 @@
 <?php
 
 include('db.php');
-// session_start();
+$msg = ['status' => "", 'error' => ''];
 function fetchSeries(){
      global $db;
      $query =  "SELECT * FROM series";
@@ -14,8 +14,24 @@ function fetchSeries(){
      }
 }
 
+function seriesDetail(){
+     global $db;     
+     global $msg;
+     $id = $_GET['id'];
+     $query = "SELECT * FROM series WHERE id = $id";
+     $result = mysqli_query($db, $query);
+     $row = mysqli_num_rows($result);
+     if ($row == 0) {
+          return false;
+     }else{
+          return $result;
+     }
+}
+
 function addSeries(){
      global $db;
+     global $msg;
+
      if (isset($_POST['submit'])) {
           # code...
           $name = $_POST['name'];
@@ -29,24 +45,26 @@ function addSeries(){
           $result = mysqli_query($db, $check);
           $row = mysqli_num_rows($result);
           if ($row > 0) {
-               $_SESSION['errors'] = "Series Already Exist";
+               $msg['error'] = "Series Already Exist";
           }else{
               $query = "INSERT INTO series (name, isComplete) VALUES ('$name', $completed)";
               if (mysqli_query($db, $query)) {
-                  $_SESSION['status'] = "Series Successfully Added";
+                  $msg['status'] = "Series Successfully Added";
                   echo "
                <script>
                window.location.href='./seriesList.php';
                </script>
                ";
               } else {
-                  $_SESSION['errors'] = "Something Wrong Please Try Again Later";
+                  $msg['error'] = "Something Wrong Please Try Again Later";
               }
           }
      }
 }
 function updateSeries(){
      global $db;
+     global $msg;
+
      if (isset($_POST['submit'])) {
           # code...
           $id = $_GET['id'];
@@ -61,18 +79,18 @@ function updateSeries(){
           $result = mysqli_query($db, $check);
           $row = mysqli_num_rows($result);
           if ($row > 0) {
-               $_SESSION['errors'] = "Series Already Exist";
+               $msg['error'] = "Series Already Exist";
           }else{
               $query = "UPDATE series SET name = '$name', isComplete = $completed WHERE id = $id";
               if (mysqli_query($db, $query)) {
-                  $_SESSION['status'] = "Series Successfully Added";
+                  $msg['status'] = "Series Successfully Added";
                   echo "
                <script>
                window.location.href='./seriesList.php';
                </script>
                ";
               } else {
-                  $_SESSION['errors'] = "Something Wrong Please Try Again Later";
+                  $msg['error'] = "Something Wrong Please Try Again Later";
               }
           }
      }
@@ -80,18 +98,20 @@ function updateSeries(){
 
 function deleteSeries(){
      global $db;
+     global $msg;
+
      if (isset($_GET['deleteSeries'])) {
           $id = $_GET['deleteSeries'];
           $query = "DELETE FROM series WHERE id = $id";
 
           if (mysqli_query($db, $query)) {
-               $_SESSION['flash_message'] = "Series Successfuly Deleted";
+               // $msg['status'] = "Series Successfuly Deleted";
                echo "<script>
-               // alert('Deleted Successfuly');
+               alert('Deleted Successfuly');
                window.location.href='../seriesList.php';
                </script>";
           }else{
-               $_SESSION['errors'] = "Something Wrong Please Try Again Later";
+               $msg['error'] = "Something Wrong Please Try Again Later";
           }
      }
 }

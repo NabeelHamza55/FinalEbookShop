@@ -1,3 +1,10 @@
+<?php if(!isset($_SESSION['login'])){
+     echo "
+          <script>
+               window.location.href='/login.php';
+          </script>
+     ";
+} ?>
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <!-- Navbar Brand-->
     <a class="navbar-brand ps-3" href="index.html">Library Management</a>

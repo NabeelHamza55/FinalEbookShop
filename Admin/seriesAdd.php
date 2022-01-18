@@ -22,12 +22,12 @@ addSeries();
 
             <section class="container">
                 <div class="text-center bg-danger rounded">
-                    <?php if(isset($_SESSION['errors'])) { ?>
+                    <?php if(isset($msg['error'])) { ?>
                     <p class="lead mt-1 text-light">
-                        <?php echo $_SESSION['errors'] ?>
+                        <?php echo $msg['error'] ?>
                     </p>
                     <?php }
-                         unset($_SESSION['errors']);
+                         unset($msg['error']);
                     ?>
                 </div>
                 <div class="row">
