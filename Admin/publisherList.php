@@ -2,6 +2,10 @@
 $title = 'Publishers List';
 include('./components/HTML_Start.php');
 include('./components/header.php');
+
+include('./functions/_Publisher.php');
+
+$list = fetchPublishers();
 ?>
 
 <h1 class="mt-4">Publishers</h1>
@@ -16,37 +20,53 @@ include('./components/header.php');
         <a href="./publisherAdd.php" class="btn btn-primary">Add Publisher</a>
     </div>
     <div class="card-body">
+        <div class="text-center bg-success rounded">
+            <?php if(isset($msg['status'])) { ?>
+            <p class="lead mt-1 text-light">
+                <?php
+                if (isset($msg['status'])) {
+                    echo  $msg['status'];
+                }
+               ?>
+            </p>
+            <?php }
+               ?>
+        </div>
         <table class="table table-responsive table-hover" id="datatablesSimple">
             <thead>
                 <tr>
+                    <th>Sr.No.</th>
                     <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Age</th>
-                    <th>Start date</th>
-                    <th>Salary</th>
+                    <th>Action</th>
                 </tr>
             </thead>
-            <tfoot>
-                <tr>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Age</th>
-                    <th>Start date</th>
-                    <th>Salary</th>
-                </tr>
-            </tfoot>
             <tbody>
-                <tr>
-                    <td>Tiger Nixon</td>
-                    <td>System Architect</td>
-                    <td>Edinburgh</td>
-                    <td>61</td>
-                    <td>2011/04/25</td>
-                    <td>$320,800</td>
+                <?php if($list == false){ ?>
+
+                <tr class="text-center">
+                    <td colspan="5">No Publisher Found</td>
                 </tr>
 
+                <?php }else { 
+                    $sr = 1;
+                    while($publisher = mysqli_fetch_assoc($list)) { ?>
+                <tr>
+                    <td><?= $sr++; ?></td>
+                    <td><?= $publisher['name'] ?></td>
+                    <td>
+                        <div class="container">
+                            <button onclick="window.location.href='./publisherUpdate.php?id=<?= $publisher['id']; ?>'"
+                                class="btn btn-primary">Edit</button>
+
+                            <button
+                                onclick=" window.location.href='./functions/_Publisher.php?deletePublisher=<?= $publisher['id'];  ?>';"
+                                class="btn btn-danger">Delete</button>
+                        </div>
+                    </td>
+                </tr>
+                <?php 
+}
+} ?>
             </tbody>
         </table>
     </div>

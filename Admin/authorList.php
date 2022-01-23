@@ -35,7 +35,7 @@ $list = fetchAuthors();
         <table class="table table-responsive table-hover" id="datatablesSimple">
             <thead>
                 <tr>
-                    <th>Sr No</th>
+                    <th>Sr.No.</th>
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Description</th>
