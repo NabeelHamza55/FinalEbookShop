@@ -27,7 +27,6 @@ addSeries();
                         <?php echo $msg['error'] ?>
                     </p>
                     <?php }
-                         unset($msg['error']);
                     ?>
                 </div>
                 <div class="row">
