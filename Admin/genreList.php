@@ -1,29 +1,33 @@
 <?php
-$title = 'Series List';
+$title = 'Genres List';
 include('./components/HTML_Start.php');
 include('./components/header.php');
-include('./functions/_Series.php');
 
-$list = fetchSeries();
+include('./functions/_Genre.php');
 
+$list = fetchGenres();
 ?>
 
-<h1 class="mt-4">Series</h1>
+<h1 class="mt-4">Genres</h1>
 <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item">Dashboard</li>
-    <li class="breadcrumb-item active">Series</li>
+    <li class="breadcrumb-item active">Genres</li>
 </ol>
 
 <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
-        <h4 class="card-title">Series List</h4>
-        <a href="./seriesAdd.php" class="btn btn-primary">Add Series</a>
+        <h4 class="card-title">Genre List</h4>
+        <a href="./genreAdd.php" class="btn btn-primary">Add Genre</a>
     </div>
     <div class="card-body">
         <div class="text-center bg-success rounded">
-            <?php if(!empty($msg['status'])) { ?>
+            <?php if(isset($msg['status'])) { ?>
             <p class="lead mt-1 text-light">
-                <?= $msg['status'] ?>
+                <?php
+                if (isset($msg['status'])) {
+                    echo  $msg['status'];
+                }
+               ?>
             </p>
             <?php }
                ?>
@@ -31,43 +35,38 @@ $list = fetchSeries();
         <table class="table table-responsive table-hover" id="datatablesSimple">
             <thead>
                 <tr>
-                    <th>Sr.No</th>
+                    <th>Sr.No.</th>
                     <th>Name</th>
-                    <th>Status</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                <?php if(empty($list)){ ?>
+                <?php if($list == false){ ?>
+
                 <tr class="text-center">
-                    <td colspan="4">No Series Found</td>
+                    <td colspan="5">No Genre Found</td>
                 </tr>
-                <?php  }else{
-                $sr = 1;
-                while($series = mysqli_fetch_assoc($list)) {
-                ?>
+
+                <?php }else { 
+                    $sr = 1;
+                    while($genre = mysqli_fetch_assoc($list)) { ?>
                 <tr>
-                    <td><?php echo $sr++ ?></td>
-                    <td><?php echo $series['name'] ?></td>
-                    <td><?php if ($series['isComplete'] == 1) {
-                         echo "Completed";
-                    }else{
-                         echo "InComplete";
-                    } ?></td>
+                    <td><?= $sr++; ?></td>
+                    <td><?= $genre['name'] ?></td>
                     <td>
                         <div class="container">
-                            <button onclick="window.location.href='./seriesUpdate.php?id=<?= $series['id']; ?>'"
+                            <button onclick="window.location.href='./genreUpdate.php?id=<?= $genre['id']; ?>'"
                                 class="btn btn-primary">Edit</button>
 
                             <button
-                                onclick="confirm('Are You Sure'); window.location.href='./functions/_Series.php?deleteSeries=<?= $series['id'];  ?>';"
+                                onclick=" window.location.href='./functions/_Genre.php?deleteGenre=<?= $genre['id'];  ?>';"
                                 class="btn btn-danger">Delete</button>
                         </div>
                     </td>
                 </tr>
-                <?php
-                    }
-               } ?>
+                <?php 
+}
+} ?>
             </tbody>
         </table>
     </div>

@@ -62,9 +62,9 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                         Authors
                     </a>
-                    <a class="nav-link" href="./generList.php">
+                    <a class="nav-link" href="./genreList.php">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                        Geners
+                        Genres
                     </a>
                     <a class="nav-link" href="./publisherList.php">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>

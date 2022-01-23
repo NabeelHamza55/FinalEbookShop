@@ -1,25 +1,25 @@
 <?php
-$title = 'Add Publishers';
+$title = 'Add Genres';
 include('./components/HTML_Start.php');
 include('./components/header.php');
 
-include('./functions/_Publisher.php');
+include('./functions/_Genre.php');
 
-$list = addPublisher();
+$list = addGenre();
 ?>
 
-<h1 class="mt-4">Publishers</h1>
+<h1 class="mt-4">Genres</h1>
 <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item">Dashboard</li>
-    <li class="breadcrumb-item">Publishers</li>
-    <li class="breadcrumb-item active">Add Publisher</li>
+    <li class="breadcrumb-item">Genres</li>
+    <li class="breadcrumb-item active">Add Genre</li>
 </ol>
 
 <form action="" method="POST">
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
-            <h4 class="card-title">Add Publisher</h4>
-            <a href="./publisherList.php" class="btn btn-primary">Publisher List</a>
+            <h4 class="card-title">Add Genre</h4>
+            <a href="./genreList.php" class="btn btn-primary">Genre List</a>
         </div>
         <div class="card-body">
             <div class="text-center bg-danger rounded">
@@ -34,7 +34,7 @@ $list = addPublisher();
                 <div class="row">
                     <div class="col-12">
                         <div class="form-group">
-                            <label for="name">Publisher Name</label>
+                            <label for="name">Genre Name</label>
                             <input type="text" name="name" class="form-control" id="name" required>
                         </div>
                     </div>
@@ -42,7 +42,7 @@ $list = addPublisher();
             </section>
         </div>
         <div class="card-footer">
-            <button class="btn btn-primary" type="submit" name="submit">Add Publisher</button>
+            <button class="btn btn-primary" type="submit" name="submit">Add Genre</button>
         </div>
     </div>
 </form>
