@@ -1,23 +1,23 @@
 <?php
-$title = 'Add Author';
+$title = 'Add Gener';
 include('./components/HTML_Start.php');
 include('./components/header.php');
-include('./functions/_Author.php');
+include('./functions/_Gener.php');
 
-addAuthor();
+addGener();
 ?>
 
-<h1 class="mt-4">Authors</h1>
+<h1 class="mt-4">Geners</h1>
 <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item">Dashboard</li>
-    <li class="breadcrumb-item">Authors</li>
-    <li class="breadcrumb-item active">Add Author</li>
+    <li class="breadcrumb-item">Geners</li>
+    <li class="breadcrumb-item active">Add Gener</li>
 </ol>
 
 <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
-        <h4 class="card-title">Add Author</h4>
-        <a href="./authorList.php" class="btn btn-primary">Author List</a>
+        <h4 class="card-title">Add Gener</h4>
+        <a href="./generList.php" class="btn btn-primary">Gener List</a>
     </div>
     <form action="" method="post">
         <div class="card-body">
@@ -53,7 +53,7 @@ addAuthor();
             </section>
         </div>
         <div class="card-footer">
-            <button class="btn btn-primary" type="submit" name="submit">Add Author</button>
+            <button class="btn btn-primary" type="submit" name="submit">Add Gener</button>
         </div>
     </form>
 </div>
