@@ -1,6 +1,6 @@
 <!-- Out Team -->
 
-<div class="container p-5 ">
+<div id="Team" class="container  p-5"  >
         <div class="row">
             <div class="col-12 text-center">
                 <h1>Our Team</h1>
@@ -33,7 +33,7 @@
                             <img src="images/Team/Usama.jpg" alt="#">
                         </div>
                         <div class="text-left m-2">
-                            <h5>USman Ali</h5>
+                            <h5>Usama Ali</h5>
                             <p>ADCS-F19-082</p>
                         </div>
                     </div></a>
