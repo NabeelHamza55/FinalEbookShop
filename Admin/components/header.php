@@ -49,6 +49,19 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         Dashboard
                     </a>
+                    <div class="sb-sidenav-menu-heading">User Management</div>
+                    <a class="nav-link" href="./profile.php">
+                        <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+                        Profile
+                    </a>
+                    <a class="nav-link" href="./userList.php">
+                        <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                        Users
+                    </a>
+                    <a class="nav-link" href="./RolesList.php">
+                        <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                        Roles
+                    </a>
                     <div class="sb-sidenav-menu-heading">Manage Books</div>
                     <a class="nav-link" href="./bookList.php">
                         <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
@@ -59,7 +72,7 @@
                         Series
                     </a>
                     <a class="nav-link" href="./authorList.php">
-                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                        <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                         Authors
                     </a>
                     <a class="nav-link" href="./genreList.php">
