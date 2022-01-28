@@ -38,7 +38,7 @@ function addRole(){
           $issueLimit = $_POST['issueLimit'];
           $bookLimit = $_POST['bookLimit'];
           $fineLimit = $_POST['fineLimit'];
-          
+          // $priority = $_POST['priority'];
 
 
           $check = "SELECT name FROM role WHERE name = '$name'";
@@ -47,12 +47,12 @@ function addRole(){
           if ($row > 0) {
                $msg['error'] = "Role Already Exist";
           }else{
-              $query = "INSERT INTO roles (name, isComplete) VALUES ('$name', )";
+              $query = "INSERT INTO roles (name, issueDayLimit, issueBookLimit, finePerDay) VALUES ('$name', $issueLimit, $bookLimit, $fineLimit)";
               if (mysqli_query($db, $query)) {
                   $msg['status'] = "Role Successfully Added";
                   echo "
                <script>
-               window.location.href='./roleList.php';
+                window.location.href='./rolesList.php';
                </script>
                ";
               } else {
@@ -69,20 +69,22 @@ function updateRole(){
           # code...
           $id = $_GET['id'];
           $name = $_POST['name'];
-         
+          $issueLimit = $_POST['issueLimit'];
+          $bookLimit = $_POST['bookLimit'];
+          $fineLimit = $_POST['fineLimit'];
 
-          $check = "SELECT name FROM role WHERE name = '$name' AND id != $id";
+          $check = "SELECT name FROM roles WHERE name = '$name' AND id != $id";
           $result = mysqli_query($db, $check);
           $row = mysqli_num_rows($result);
           if ($row > 0) {
                $msg['error'] = "Role Already Exist";
           }else{
-              $query = "UPDATE roles SET name = '$name', isComplete =  WHERE id = $id";
+              $query = "UPDATE roles SET name = '$name', issueDayLimit = $issueLimit, issueBookLimit = $bookLimit, finePerDay = $fineLimit  WHERE id = $id";
               if (mysqli_query($db, $query)) {
                   $msg['status'] = "Role Successfully Added";
                   echo "
                <script>
-               window.location.href='./roleList.php';
+               window.location.href='./rolesList.php';
                </script>
                ";
               } else {
@@ -104,7 +106,7 @@ function deleteRole(){
                // $msg['status'] = "Role Successfuly Deleted";
                echo "<script>
                alert('Deleted Successfuly');
-               window.location.href='../roleList.php';
+               window.location.href='../rolesList.php';
                </script>";
           }else{
                $msg['error'] = "Something Wrong Please Try Again Later";

@@ -50,8 +50,15 @@ $list = fetchBooks();
                 </tr>
             </thead>
             <tbody>
-                <?php $sr = 1;
-                 while($book = mysqli_fetch_assoc($list)){ ?>
+                <?php if($list == false){ ?>
+
+                <tr class="text-center">
+                    <td colspan="14">No Genre Found</td>
+                </tr>
+
+                <?php }else {
+                    $sr = 1;
+                    while ($book = mysqli_fetch_assoc($list)) { ?>
                 <tr>
                     <td><?= $sr++ ?></td>
                     <td><?= $book['title'] ?></td>
@@ -77,7 +84,8 @@ $list = fetchBooks();
                         </div>
                     </td>
                 </tr>
-                <?php } ?>
+                <?php }
+                }?>
             </tbody>
         </table>
     </div>

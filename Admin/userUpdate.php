@@ -1,21 +1,24 @@
 <?php
-$title = 'Add Role';
+$title = 'Update Role';
 include('./components/HTML_Start.php');
 include('./components/header.php');
 include('./functions/_Roles.php');
-addRole();
+updateRole();
+userDetail();
+$data = roleDetail();
+$role =  mysqli_fetch_assoc($data);
 ?>
 
 <h1 class="mt-4">Role</h1>
 <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item">Dashboard</li>
     <li class="breadcrumb-item">Roles</li>
-    <li class="breadcrumb-item active">Add Role</li>
+    <li class="breadcrumb-item active">Update Role</li>
 </ol>
 <div class="card">
     <div class="card-header text-light bg-primary d-flex justify-content-between align-items-center">
-        <h4 class="card-title">Add Role</h4>
-        <a href="./roleList.php" class="btn btn-light">Roles List</a>
+        <h4 class="card-title">Update Role</h4>
+        <a href="./rolesList.php" class="btn btn-light">Roles List</a>
     </div>
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" id="role">
         <div class="card-body">
@@ -33,26 +36,30 @@ addRole();
                     <div class="col-12">
                         <div class="form-group">
                             <label for="name">Role Name</label>
-                            <input type="text" name="name" value="" class="form-control" id="name" required>
+                            <input type="text" name="name" value="<?= $role['name'] ?>" class="form-control" id="name"
+                                required>
                         </div>
                         <br>
                         <div class="row">
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="issueLimit">Set Issue Limit Per Day</label>
-                                    <input type="number" class="form-control" name="issueLimit" id="issueLimit">
+                                    <input type="number" value="<?= $role['issueDayLimit'] ?>" class="form-control"
+                                        name="issueLimit" id="issueLimit">
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="bookLimit">Set Book Limit Per Day</label>
-                                    <input type="number" class="form-control" name="bookLimit" id="bookLimit">
+                                    <input type="number" value="<?= $role['issueBookLimit'] ?>" class="form-control"
+                                        name="bookLimit" id="bookLimit">
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="fineLimit">Set Fine Per Day</label>
-                                    <input type="number" class="form-control" name="fineLimit" id="fineLimit">
+                                    <input type="number" value="<?= $role['finePerDay'] ?>" class="form-control"
+                                        name="fineLimit" id="fineLimit">
                                 </div>
                             </div>
                             <!-- <div class="col-3">
@@ -68,7 +75,7 @@ addRole();
             </section>
         </div>
         <div class="card-footer">
-            <button class="btn btn-primary d-flex" type="submit" name="submit">Add Role</button>
+            <button class="btn btn-primary d-flex" type="submit" name="submit">Update Role</button>
         </div>
     </form>
 </div>

@@ -1,23 +1,23 @@
 <?php
-$title = 'Role List';
+$title = 'User List';
 include('./components/HTML_Start.php');
 include('./components/header.php');
-include('./functions/_Roles.php');
+include('./functions/_Users.php');
 
-$list = fetchRoles();
+$list = fetchUsers();
 
 ?>
 
-<h1 class="mt-4">Role</h1>
+<h1 class="mt-4">User</h1>
 <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item">Dashboard</li>
-    <li class="breadcrumb-item active">Roles</li>
+    <li class="breadcrumb-item active">Users</li>
 </ol>
 
 <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
-        <h4 class="card-title">Role List</h4>
-        <a href="./roleAdd.php" class="btn btn-primary">Add Role</a>
+        <h4 class="card-title">User List</h4>
+        <a href="./userAdd.php" class="btn btn-primary">Add User</a>
     </div>
     <div class="card-body">
         <div class="text-center bg-success rounded">
@@ -32,35 +32,43 @@ $list = fetchRoles();
             <thead>
                 <tr>
                     <th>Sr.No</th>
-                    <th>Name</th>
-                    <th>Issue Limit</th>
-                    <th>Book Limit</th>
-                    <th>Fine Per Day Limit</th>
-                    <th>Priority</th>
+                    <th>Picture</th>
+                    <th>First Name</th>
+                    <th>last Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 <?php if(empty($list)){ ?>
                 <tr class="text-center">
-                    <td colspan="4">No Role Found</td>
+                    <td colspan="4">No User Found</td>
                 </tr>
                 <?php  }else{
                 $sr = 1;
-                while($role = mysqli_fetch_assoc($list)) {
+                while($user = mysqli_fetch_assoc($list)) {
                 ?>
                 <tr>
-                    <td><?php echo $sr++ ?></td>
-                    <td><?php echo $role['name'] ?></td>
-                    <td><?php echo $role['issueDayLimit'] ?></td>
-                    <td><?php echo $role['issueBookLimit'] ?></td>
-                    <td><?php echo $role['finePerDay'] ?></td>
+                    <td><?= $sr++ ?></td>
+                    <td><?= $user['photoId'] ?></td>
+                    <td><?= $user['firstName'] ?></td>
+                    <td><?= $user['lastName'] ?></td>
+                    <td><?= $user['email'] ?></td>
+                    <td><?= getRole($user['roleId']); ?></td>
+                    <td><?= $user['phone'] ?></td>
+                    <td><?= $user['address'] ?></td>
+                    <td><?= $user['isActive'] ?></td>
                     <td>
                         <div class="container">
-                            <button onclick="window.location.href='./roleUpdate.php?id=<?= $role['id']; ?>'"
+                            <button onclick="window.location.href='./userUpdate.php?id=<?= $user['id']; ?>'"
                                 class="btn btn-primary">Edit</button>
+
                             <button
-                                onclick="confirm('Are You Sure'); window.location.href='./functions/_Roles.php?deleteRole=<?= $role['id'];  ?>';"
+                                onclick="confirm('Are You Sure'); window.location.href='./functions/_Users.php?deleteUser=<?= $user['id'];  ?>';"
                                 class="btn btn-danger">Delete</button>
                         </div>
                     </td>
