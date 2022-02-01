@@ -18,7 +18,7 @@ addBooks();
         <h4 class="card-title">Add Book</h4>
         <a href="./bookList.php" class="btn btn-primary">Book List</a>
     </div>
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         <div class="card-body">
             <div class="text-center bg-danger rounded">
                 <?php if(isset($msg['error'])) { ?>
@@ -33,19 +33,28 @@ addBooks();
                     <div class="col">
                         <div class="form-group">
                             <label for="title">Title</label>
-                            <input type="text" name="title" class="form-control" id="title" required>
+                            <input type="text" name="title" class="form-control" id="title" >
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-group">
                             <label for="subTitle">Sub Title</label>
-                            <input type="text" name="subTitle" class="form-control" id="subTitle" required>
+                            <input type="text" name="subTitle" class="form-control" id="subTitle" >
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-group">
                             <label for="isbn">ISBN</label>
-                            <input type="text" name="isbn" class="form-control" id="isbn" required>
+                            <input type="text" name="isbn" class="form-control" id="isbn" >
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="picture">Cover Picture</label>
+                            <input type="file" name="cover" id="cover" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -54,7 +63,7 @@ addBooks();
                     <div class="col-6">
                         <div class="form-group">
                             <label for="series">Series</label>
-                            <!-- <input type="text" name="series" class="form-control" id="series" required> -->
+                            <!-- <input type="text" name="series" class="form-control" id="series" > -->
                             <select name="series" class="form-control" id="series">
                                 <option selected disabled value="">Select Series</option>
                                 <?php  
@@ -76,7 +85,7 @@ addBooks();
                     <div class="col-6">
                         <div class="form-group">
                             <label for="publisher">Publisher</label>
-                            <!-- <input type="text" name="publisher" class="form-control" id="publisher" required> -->
+                            <!-- <input type="text" name="publisher" class="form-control" id="publisher" > -->
                             <select name="publisher" class="form-control" id="publisher">
                                 <option selected disabled value="">Select Publisher</option>
                                 <?php  
@@ -140,14 +149,14 @@ addBooks();
                     <div class="col-6">
                         <div class="form-group">
                             <label for="edition">Edition</label>
-                            <input type="text" name="edition" class="form-control" id="edition" required>
+                            <input type="text" name="edition" class="form-control" id="edition" >
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
                             <label for="published_year">Published Year</label>
                             <input type="number" name="published_year" class="form-control" id="published_year"
-                                required>
+                                >
                         </div>
                     </div>
                 </div>
@@ -156,7 +165,7 @@ addBooks();
                     <div class="col-4">
                         <div class="form-group">
                             <label for="pages">Pages</label>
-                            <input type="number" name="pages" class="form-control" id="pages" required>
+                            <input type="number" name="pages" class="form-control" id="pages" >
                         </div>
                     </div>
                     <div class="col-4">
@@ -185,19 +194,19 @@ addBooks();
                     <div class="col-4">
                         <div class="form-group">
                             <label for="quantity">Quantity</label>
-                            <input type="number" name="quantity" class="form-control" id="quantity" required>
+                            <input type="number" name="quantity" class="form-control" id="quantity" >
                         </div>
                     </div>
                     <div class="col-4">
                         <div class="form-group">
                             <label for="price">Price</label>
-                            <input type="number" name="price" class="form-control" id="price" required>
+                            <input type="number" name="price" class="form-control" id="price" >
                         </div>
                     </div>
                     <div class="col-4">
                         <div class="form-group">
                             <label for="language">Language</label>
-                            <input type="text" name="language" class="form-control" id="language" required>
+                            <input type="text" name="language" class="form-control" id="language" >
                         </div>
                     </div>
                     <div class="col-12">

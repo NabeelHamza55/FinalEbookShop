@@ -34,6 +34,7 @@ $list = fetchBooks();
             <thead>
                 <tr>
                     <th>Sr.No</th>
+                    <th>Cover Picture</th>
                     <th>Title</th>
                     <th>Sub Title</th>
                     <th>Author</th>
@@ -61,6 +62,25 @@ $list = fetchBooks();
                     while ($book = mysqli_fetch_assoc($list)) { ?>
                 <tr>
                     <td><?= $sr++ ?></td>
+                    <td>
+                        <?php 
+                            $coverId = $book['coverId'];
+                            $query = "SELECT * FROM images WHERE id = $coverId";
+                            $result = mysqli_query($db, $query);
+                            if (!empty($result)) {
+                                # code...
+                            
+                                $row = mysqli_num_rows($result);
+                                if ($row > 0) {
+                                    $image = mysqli_fetch_assoc($result); ?>
+                        <img src="<?= './../'.$image['path'].'/'.$image['title'] ?>" alt="" class="img-thumbnail">
+                        <?php
+                                } 
+                            }else {
+                                echo 'NA';
+                            }
+                        ?>
+                    </td>
                     <td><?= $book['title'] ?></td>
                     <td><?= $book['subtitle'] ?></td>
                     <td><?= getAuthor($book['id']) ?> </td>

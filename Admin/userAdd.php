@@ -41,7 +41,7 @@ $data = fetchRoles();
                     <div class="col-4">
                         <div class="form-group">
                             <label for="middleName">Middle Name</label>
-                            <input type="text" name="middleName" value="" class="form-control" id="middleName" required>
+                            <input type="text" name="middleName" value="" class="form-control" id="middleName">
                         </div>
                     </div>
                     <div class="col-4">
@@ -87,7 +87,6 @@ $data = fetchRoles();
                         <div class="form-group">
                             <label for="gender">Gender</label>
                             <select name="gender" class="form-control" id="gender">
-                                <option value="" selected disabled>Select Gender</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                             </select>
@@ -96,7 +95,7 @@ $data = fetchRoles();
                     <div class="col-4">
                         <div class="form-group">
                             <label for="status">Status</label>
-                            <select name="status" class="form-control" id="status">
+                            <select name="status" required class="form-control" id="status">
                                 <option value="" selected disabled>Select Status</option>
                                 <option value="1">Active</option>
                                 <option value="0">Deactive</option>
@@ -106,7 +105,7 @@ $data = fetchRoles();
                     <div class="col-4">
                         <div class="form-group">
                             <label for="role">Role</label>
-                            <select name="role" class="form-control" id="role">
+                            <select name="role" required class="form-control" id="role">
                                 <option value="" selected disabled>Selecet Role</option>
                                 <?php if (!empty($data)) {
                                     while($role = mysqli_fetch_assoc($data)){

@@ -28,6 +28,7 @@ function userDetail(){
      }
 }
 
+
 function addUser(){
     global $db;
     global $msg;
@@ -82,40 +83,101 @@ function addUser(){
             }
         }
     }
-    function updateUser()
-    {
-        global $db;
-        global $msg;
+}
+function updateUser(){
+    global $db;
+    global $msg;
+    if (isset($_POST['submit'])) {
+        $id = $_GET['id'];
+        $firstName = $_POST['firstName'];
+        $middleName = $_POST['middleName'];
+        $lastName = $_POST['lastName'];
+        $email = $_POST['email'];
+        $phone = $_POST['phone'];
+        $password = $_POST['password'];
+        $passwordConfirmation = $_POST['passwordConfirmation'];
+        $gender = $_POST['gender'];
+        $status = $_POST['status'];
+        $role = $_POST['role'];
+        $address = $_POST['address'];
 
-        if (isset($_POST['submit'])) {
-            # code...
-            $id = $_GET['id'];
-            $name = $_POST['name'];
-            $issueLimit = $_POST['issueLimit'];
-            $bookLimit = $_POST['bookLimit'];
-            $fineLimit = $_POST['fineLimit'];
+        if (empty($email)) {
+            $msg['error'] = 'Please Enter Your Email';
+        }
 
-            $check = "SELECT name FROM users WHERE name = '$name' AND id != $id";
-            $result = mysqli_query($db, $check);
-            $row = mysqli_num_rows($result);
-            if ($row > 0) {
-                $msg['error'] = "User Already Exist";
+        if (empty($password)) {
+            $msg['error'] = 'Please Enter Your Password';
+        } else {
+            if (strlen($password) < 8) {
+                $msg['error'] = "The Password Must Be Atleast 8 Character";
             } else {
-                $query = "UPDATE users SET name = '$name', issueDayLimit = $issueLimit, issueBookLimit = $bookLimit, finePerDay = $fineLimit  WHERE id = $id";
-                if (mysqli_query($db, $query)) {
-                    $msg['status'] = "User Successfully Added";
-                    echo "
-               <script>
-               window.location.href='./usersList.php';
-               </script>
-               ";
+                if ($password != $passwordConfirmation) {
+                    $msg['error'] = "Password Confirmation Failed";
                 } else {
-                    $msg['error'] = "Something Wrong Please Try Again Later";
+                    $query = "SELECT * FROM users WHERE email = '$email' AND id != $id";
+                    $checkUser = mysqli_query($db, $query);
+                    $row = mysqli_num_rows($checkUser);
+                    if ($row > 0) {
+                        $msg['error'] = "User Already Exist";
+                    } else {
+                        $safePassword = sha1($password);
+                        $query = "UPDATE users SET roleId = $role, email = '$email', password = '$safePassword', firstName = '$firstName', middleName = '$middleName', lastName = '$lastName', isActive = $status, phone = '$phone', address = '$address', gender = '$gender' WHERE id = $id";
+                        if (mysqli_query($db, $query)) {
+                            $msg['status'] = "User Successfully Added";
+                            echo "
+                                    <script>
+                                    window.location.href='./userList.php';
+                                    </script>
+                                    ";
+                        } else {
+                            $msg['error'] = "Something Wrong Please Try Again Later";
+                        }
+                    }
                 }
             }
         }
     }
 }
+function updateProfile($id)
+{
+    global $db;
+    global $msg;
+    if (isset($_POST['submit'])) {
+        $firstName = $_POST['firstName'];
+        $middleName = $_POST['middleName'];
+        $lastName = $_POST['lastName'];
+        $email = $_POST['email'];
+        $phone = $_POST['phone'];
+        $gender = $_POST['gender'];
+        $address = $_POST['address'];
+
+      
+        $query = "SELECT * FROM users WHERE email = '$email' AND id != $id";
+        $checkUser = mysqli_query($db, $query);
+        $row = mysqli_num_rows($checkUser);
+        if ($row > 0) {
+            $msg['error'] = "User Already Exist";
+        } else {
+            $query = "UPDATE users SET email = '$email', firstName = '$firstName', middleName = '$middleName', lastName = '$lastName', phone = '$phone', address = '$address', gender = '$gender' WHERE id = $id";
+      
+            if (mysqli_query($db, $query)) {
+                // $_SESSION['login'] = mysqli_fetch_assoc($checkUser);
+                
+                $msg['status'] = "User Successfully Added";
+                // echo "
+                //                     <script>
+                //                     window.location.href='./userProfile.php';
+                //                     </script>
+                //                     ";
+            } else {
+                $msg['error'] = "Something Wrong Please Try Again Later";
+            }
+        }
+    }
+}
+    
+
+
 function deleteUser(){
      global $db;
      global $msg;
