@@ -3,55 +3,55 @@
         <div class="ml-2 mr-2" style="background-color:green;">
             <img src="images/owl.1.jpg" width="100%" height="550rem">
             <center class="p-3">
-                Nature
+                Magic of Love
             </center>
         </div>
         <div class="ml-2 mr-2" style="background-color:green;">
            <img src="images/owl.2.png" width="100%" height="550rem">
            <center class="p-3">
-               Nature
+               Summer Of Night
            </center>
         </div>
         <div class="ml-2 mr-2" style="background-color:green;">
             <img src="images/owl 3.jpg" width="100%" height="550rem">
             <center class="p-3">
-                Nature
+                Mirror Image
             </center>
         </div>
         <div class="ml-2 mr-2" style="background-color:green;">
             <img src="images/owl 4.jpg" width="100%" height="550rem">
             <center class="p-3">
-                Nature
+                Kerror Mori
             </center>
         </div>
         <div class="ml-2 mr-2" style="background-color:green;">
             <img src="images/owl.5.jpg" width="100%" height="550rem">
             <center class="p-3">
-                Nature
+                Paulo
             </center>
         </div>
         <div class="ml-2 mr-2" style="background-color:green;">
             <img src="images/owl.6.jpg" width="100%" height="550rem">
             <center class="p-3">
-                Nature
+                Jungle Of Book
             </center>
         </div>
         <div class="ml-2 mr-2" style="background-color:green;">
             <img src="images//owl.7.jpg" width="100%" height="550rem">
             <center class="p-3">
-                Nature
+                teacher's Day
             </center>
         </div>
         <div class="ml-2 mr-2" style="background-color:green;">
             <img src="images/owll.8.jpg" width="100%" height="550rem">
             <center class="p-3">
-                Nature
+                The Book
             </center>
         </div>
         <div class="ml-2 mr-2" style="background-color:green;">
             <img src="images/owll.9.jpg" width="100%" height="550rem">
             <center class="p-3">
-                Nature
+                Divine Love
             </center>
         </div>
         <div class="ml-2 mr-2" style="background-color:green;">

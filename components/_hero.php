@@ -1,4 +1,4 @@
-<div id="Featured" class=" p-5">
+<div id="Featured" class=" p-5 secondpage">
     <div class="secondpage" id="categories">    
         <div class=" py-5 font-adj">
             Featured Categories
