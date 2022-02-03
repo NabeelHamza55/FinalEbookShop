@@ -13,7 +13,7 @@
                             <div>
                                 <h6 class="s_tyle">Atrs & Photography</h6>
                             </div>
-                                <button class="btn btn-lg">Shop now</button>  
+                                <button onclick=" window.location.href='https:books.google.com.pk/books/about/How_to_Draw_Cool_Stuff.html?id=hh8UBAAAQBAJ&printsec=frontcover&source=kp_read_button&hl=en&redir_esc=y#v=onepage&q&f=false'" class="btn btn-lg">Shop now</button>  
 
                         </div>
                     </div>
@@ -27,7 +27,7 @@
                             <div>
                                 <h6 class="s_tyle">Food |&| Drinks</h6>
                             </div>       
-                                <button class="btn btn-lg">Shop now</button>  
+                                <button onclick=" window.location.href='https:books.google.com.pk/books/about/Kitchen_Confidential.html?id=chwT1enuetYC&printsec=frontcover&source=kp_read_button&hl=en&redir_esc=y#v=onepage&q&f=false'" class="btn btn-lg">Shop now</button>  
                         </div>
                     </div>
                     
@@ -40,7 +40,7 @@
                             <div>
                                 <h6 class="s_tyle">Romance & Health</h6>
                             </div>  
-                            <button class="btn btn-lg">Shop now</button>     
+                            <button  onclick=" window.location.href='https:books.google.com.pk/books?id=6rKeefQN4JEC&printsec=frontcover&dq=inauthor:%22Marion+Lennox%22&hl=en&sa=X&redir_esc=y#v=onepage&q&f=false'" class="btn btn-lg">Shop now</button>     
                         </div>
                     </div>
 
@@ -53,7 +53,7 @@
                             <div>
                                 <h6 class="s_tyle">General Knowledge</h6>
                             </div>       
-                                <button class="btn btn-lg">Shop now</button>  
+                                <button onclick=" window.location.href='https:books.google.com.pk/books/about/Student_s_Encyclopedia_of_General_Knowle.html?id=tVQDDAAAQBAJ&printsec=frontcover&source=kp_read_button&hl=en&redir_esc=y#v=onepage&q&f=false'" class="btn btn-lg">Shop now</button>  
                         </div>
                     </div>
 

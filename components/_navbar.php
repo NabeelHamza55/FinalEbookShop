@@ -37,7 +37,7 @@
                 <a class="nav-link" href="#Featured">Featured</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="#Books">Categories</a>
+                <a class="nav-link " href="#Books">Series</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link " href="./_Books.php">Books</a>
