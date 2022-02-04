@@ -32,7 +32,6 @@ $list = fetchUsers();
             <thead>
                 <tr>
                     <th>Sr.No</th>
-                    <th>Picture</th>
                     <th>First Name</th>
                     <th>last Name</th>
                     <th>Email</th>
@@ -54,7 +53,6 @@ $list = fetchUsers();
                 ?>
                 <tr>
                     <td><?= $sr++ ?></td>
-                    <td><?= $user['photoId'] ?></td>
                     <td><?= $user['firstName'] ?></td>
                     <td><?= $user['lastName'] ?></td>
                     <td><?= $user['email'] ?></td>

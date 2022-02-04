@@ -39,7 +39,7 @@ $role =  mysqli_fetch_assoc($data);
                                 required>
                         </div>
                         <br>
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="issueLimit">Set Issue Limit Per Day</label>
@@ -61,14 +61,14 @@ $role =  mysqli_fetch_assoc($data);
                                         name="fineLimit" id="fineLimit">
                                 </div>
                             </div>
-                            <!-- <div class="col-3">
+                             <div class="col-3">
                                 <div class="form-group">
                                     <label for="priority">Set Priority</label>
                                     <input type="number" value="" min="1" max="3" maxlength="1" class="form-control"
                                         name="priority" id="priority">
                                 </div>
-                            </div> -->
-                        </div>
+                            </div> 
+                         </div> -->
                     </div>
                 </div>
             </section>

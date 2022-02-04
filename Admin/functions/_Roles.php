@@ -35,13 +35,13 @@ function addRole(){
      if (isset($_POST['submit'])) {
           # code...
           $name = $_POST['name'];
-          $issueLimit = $_POST['issueLimit'];
-          $bookLimit = $_POST['bookLimit'];
-          $fineLimit = $_POST['fineLimit'];
+          $issueLimit = 0;
+          $bookLimit = 0;
+          $fineLimit = 0;
           // $priority = $_POST['priority'];
 
 
-          $check = "SELECT name FROM role WHERE name = '$name'";
+          $check = "SELECT name FROM roles WHERE name = '$name'";
           $result = mysqli_query($db, $check);
           $row = mysqli_num_rows($result);
           if ($row > 0) {
@@ -69,9 +69,9 @@ function updateRole(){
           # code...
           $id = $_GET['id'];
           $name = $_POST['name'];
-          $issueLimit = $_POST['issueLimit'];
-          $bookLimit = $_POST['bookLimit'];
-          $fineLimit = $_POST['fineLimit'];
+          $issueLimit = 0;
+          $bookLimit = 0;
+          $fineLimit = 0;
 
           $check = "SELECT name FROM roles WHERE name = '$name' AND id != $id";
           $result = mysqli_query($db, $check);

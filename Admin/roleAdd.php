@@ -36,7 +36,7 @@ addRole();
                             <input type="text" name="name" value="" class="form-control" id="name" required>
                         </div>
                         <br>
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="issueLimit">Set Issue Limit Per Day</label>
@@ -55,14 +55,14 @@ addRole();
                                     <input type="number" class="form-control" name="fineLimit" id="fineLimit">
                                 </div>
                             </div>
-                            <!-- <div class="col-3">
+                            <div class="col-3">
                                 <div class="form-group">
                                     <label for="priority">Set Priority</label>
                                     <input type="number" value="" min="1" max="3" maxlength="1" class="form-control"
                                         name="priority" id="priority">
                                 </div>
-                            </div> -->
-                        </div>
+                            </div>
+                        </div> -->
                     </div>
                 </div>
             </section>

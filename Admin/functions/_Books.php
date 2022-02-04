@@ -243,6 +243,7 @@ function getPublisher($id){
           return false;
      }
 }
+
 function getAuthor($id){
      global $db;
      $query = "SELECT authorID FROM bookauthors WHERE bookId = $id";

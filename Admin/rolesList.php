@@ -33,10 +33,10 @@ $list = fetchRoles();
                 <tr>
                     <th>Sr.No</th>
                     <th>Name</th>
-                    <th>Issue Limit</th>
+                    <!-- <th>Issue Limit</th>
                     <th>Book Limit</th>
                     <th>Fine Per Day Limit</th>
-                    <th>Priority</th>
+                    <th>Priority</th> -->
                     <th>Action</th>
                 </tr>
             </thead>
@@ -52,9 +52,9 @@ $list = fetchRoles();
                 <tr>
                     <td><?php echo $sr++ ?></td>
                     <td><?php echo $role['name'] ?></td>
-                    <td><?php echo $role['issueDayLimit'] ?></td>
-                    <td><?php echo $role['issueBookLimit'] ?></td>
-                    <td><?php echo $role['finePerDay'] ?></td>
+                    <!-- <td><?php // echo $role['issueDayLimit'] ?></td>
+                    <td><?php // echo $role['issueBookLimit'] ?></td>
+                    <td><?php // echo $role['finePerDay'] ?></td> -->
                     <td>
                         <div class="container">
                             <button onclick="window.location.href='./roleUpdate.php?id=<?= $role['id']; ?>'"
