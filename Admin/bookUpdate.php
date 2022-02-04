@@ -20,7 +20,7 @@ updateBooks();
         <h4 class="card-title">Update Book</h4>
         <a href="./bookList.php" class="btn btn-primary">Book List</a>
     </div>
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         <div class="card-body">
             <div class="text-center bg-danger rounded">
                 <?php if(isset($msg['error'])) { ?>
@@ -55,6 +55,16 @@ updateBooks();
                     </div>
                 </div>
                 <hr>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="picture">Cover Picture</label>
+                            <input type="hidden" name="coverId" value="<?= $book['coverId'] ?>" class="form-control">
+                            <input type="file" name="cover" id="cover" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <hr>
                 <div class="row ">
                     <div class="col-6">
                         <div class="form-group">
@@ -63,12 +73,12 @@ updateBooks();
                             <select name="series" class="form-control" id="series">
                                 <option selected disabled value="">Select Series</option>
                                 <?php  
-                            $getSeries = 'SELECT id, name FROM series';
-                            $result = mysqli_query($db, $getSeries);
-                            $row = mysqli_num_rows($result);
-                            if ($row > 0) {
-                                while($series = mysqli_fetch_assoc($result)){
-                                    ?>
+                                $getSeries = 'SELECT id, name FROM series';
+                                $result = mysqli_query($db, $getSeries);
+                                $row = mysqli_num_rows($result);
+                                if ($row > 0) {
+                                    while($series = mysqli_fetch_assoc($result)){
+                                        ?>
                                 <option <?= $book['seriesId'] == $series['id'] ? 'selected' : '' ?>
                                     value="<?= $series['id'] ?>"><?= $series['name']; ?></option>
                                 <?php
@@ -136,7 +146,7 @@ updateBooks();
                             if ($row > 0) {
                                 while($genres = mysqli_fetch_assoc($result)){
                                      ?>
-                                <option value="<?php $genres['id'] ?>"><?= $genres['name']; ?></option>
+                                <option value="<?= $genres['id'] ?>"><?= $genres['name']; ?></option>
                                 <?php
                                 }
                             }

@@ -4,10 +4,17 @@
                window.location.href='/login.php';
           </script>
      ";
+    }
+    if ($_SESSION['login']['roleId'] == 2) {
+       echo "
+       <script>
+            window.location.href='../../index.php';
+       </script>
+  ";
 } ?>
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="index.html">Library Management</a>
+    <a class="navbar-brand ps-3" href="/">Library Management</a>
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
             class="fas fa-bars"></i></button>
 
@@ -45,12 +52,12 @@
             <div class="sb-sidenav-menu">
                 <div class="nav">
                     <div class="sb-sidenav-menu-heading">Core</div>
-                    <a class="nav-link" href="/">
+                    <a class="nav-link" href="/Admin">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         Dashboard
                     </a>
                     <div class="sb-sidenav-menu-heading">User Management</div>
-                    <a class="nav-link" href="./profile.php">
+                    <a class="nav-link" href="./userProfile.php">
                         <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                         Profile
                     </a>
@@ -61,6 +68,15 @@
                     <a class="nav-link" href="./RolesList.php">
                         <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                         Roles
+                    </a>
+                    <div class="sb-sidenav-menu-heading">Manage Library</div>
+                    <a class="nav-link" href="./bookReqlist.php">
+                        <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                        Book Requests
+                    </a>
+                    <a class="nav-link" href="./issueBooklist.php">
+                        <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                        Issue Books
                     </a>
                     <div class="sb-sidenav-menu-heading">Manage Books</div>
                     <a class="nav-link" href="./bookList.php">
