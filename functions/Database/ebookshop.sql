@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jan 02, 2022 at 09:26 PM
+-- Generation Time: Feb 04, 2022 at 02:08 AM
 -- Server version: 8.0.26
 -- PHP Version: 7.4.19
 
@@ -35,6 +35,14 @@ CREATE TABLE `authors` (
   `photoId` int UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
+--
+-- Dumping data for table `authors`
+--
+
+INSERT INTO `authors` (`id`, `firstName`, `lastName`, `description`, `photoId`) VALUES
+(1, 'Bill', 'Gates', 'Test', NULL),
+(8, 'Test', 'Test', 'Test ', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -57,6 +65,23 @@ CREATE TABLE `bookauthors` (
   `authorId` int UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
+--
+-- Dumping data for table `bookauthors`
+--
+
+INSERT INTO `bookauthors` (`bookId`, `authorId`) VALUES
+(1, 1),
+(1, 1),
+(8, 1),
+(10, 1),
+(11, 1),
+(12, 8),
+(13, 1),
+(14, 1),
+(15, 1),
+(16, 1),
+(17, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -67,6 +92,22 @@ CREATE TABLE `bookgenres` (
   `bookId` int UNSIGNED NOT NULL,
   `genreId` int UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `bookgenres`
+--
+
+INSERT INTO `bookgenres` (`bookId`, `genreId`) VALUES
+(7, 3),
+(8, 3),
+(10, 3),
+(11, 3),
+(12, 3),
+(13, 3),
+(14, 3),
+(15, 3),
+(16, 3),
+(17, 3);
 
 -- --------------------------------------------------------
 
@@ -110,6 +151,26 @@ CREATE TABLE `books` (
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Last update time',
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `books`
+--
+
+INSERT INTO `books` (`id`, `seriesId`, `publisherId`, `coverId`, `title`, `subtitle`, `ISBN10`, `ISBN13`, `publishingYear`, `pages`, `description`, `notes`, `quantity`, `actualQuantity`, `edition`, `binding`, `physicalForm`, `size`, `type`, `price`, `language`, `created_at`, `updated_at`) VALUES
+(1, 2, 1, 24, 'title1', 'subTitle1', 'isbn1', NULL, 21111, 1235, 'description', NULL, 1235, 0, 'edition1', 'Softcover', 'Manuscript', 'Medium', 'Standard', '125.00', 'langa', '2022-01-26 14:02:43', '2022-02-02 04:08:15'),
+(3, 1, 1, NULL, 'Test', 'Test', 'Test', NULL, 2111, 111, 'Test', NULL, 11, 0, 'Test', 'Hardcover', 'Book', 'Medium', 'Standard', '12.00', 'Test', '2022-01-26 14:08:30', '2022-02-02 02:47:37'),
+(4, 1, 1, NULL, 'Book', 'Book', 'Book', NULL, 2111, 111, 'Book', NULL, 1, 0, 'Book', 'Hardcover', 'Book', 'Medium', 'Standard', '123.00', 'Test', '2022-01-26 14:11:40', '2022-01-26 14:11:40'),
+(6, 1, 1, NULL, 'Book2', 'Book2', 'Book2', NULL, 2, 111, 'Book2', NULL, 1, 0, 'Book2', 'Hardcover', 'CD/DVD', 'Medium', 'Standard', '123.00', 'Test', '2022-01-26 22:36:44', '2022-01-26 22:36:44'),
+(7, 1, 1, NULL, 'genre', 'genre', 'genre', NULL, 2111, 111, 'genre', NULL, 1, 0, 'genre', 'Softcover', 'Manuscript', 'Medium', 'Standard', '123.00', 'Test', '2022-01-26 22:41:06', '2022-01-26 22:41:06'),
+(8, 1, 1, NULL, 'Book5', 'Book2', 'Book2', NULL, 2111, 111, 'Book2', NULL, 8, 0, 'Test', 'Softcover', 'Manuscript', 'Medium', 'Standard', '12.00', 'Book2', '2022-02-01 19:12:13', '2022-02-02 03:21:52'),
+(10, 1, 1, NULL, 'Book4', 'Book4', 'Book4', NULL, 4, 111, 'Book4', NULL, 5, 0, 'Book4', 'Hardcover', 'Book', 'Medium', 'Standard', '123.00', 'Book4', '2022-02-01 19:42:34', '2022-02-02 03:11:20'),
+(11, 2, 1, NULL, 'book9', 'Book9', 'Book9', NULL, 2111, 111, '', NULL, 10, 0, 'Book9', 'Hardcover', 'Book', 'Medium', 'Standard', '123.00', 'Book1', '2022-02-01 19:46:00', '2022-02-02 03:27:09'),
+(12, 2, 1, NULL, 'Book9', 'Book9', 'Book9', NULL, 2111, 111, 'Book9', NULL, 9, 0, 'Test', 'Softcover', 'Book', 'Medium', 'Standard', '123.00', 'Book1', '2022-02-01 19:48:33', '2022-02-02 03:00:01'),
+(13, 2, 1, NULL, 'Book9', 'Book9', 'Book9', NULL, 2111, 111, 'Book9', NULL, 3, 0, 'Book', 'Hardcover', 'Book', 'Medium', 'Standard', '123.00', 'Test', '2022-02-01 19:49:26', '2022-02-01 19:49:26'),
+(14, 1, 1, NULL, 'Book9', 'Book9', 'Book9', NULL, 2111, 111, 'Book9', NULL, 3, 0, 'edition1', 'Hardcover', 'Book', 'Medium', 'Standard', '123.00', 'Test', '2022-02-01 19:52:22', '2022-02-01 19:52:22'),
+(15, 1, 1, NULL, 'Book9', 'Book9', 'Book9', NULL, 2111, 9, 'Book9', NULL, 9, 0, 'Book9', 'Hardcover', 'Book', 'Medium', 'Standard', '9.00', 'Book9', '2022-02-01 20:06:04', '2022-02-01 20:06:04'),
+(16, 1, 1, 18, 'Book25', 'Book25', 'Book25', NULL, 2111, 111, '', NULL, 8, 0, 'Book9', 'Hardcover', 'Manuscript', 'Medium', 'Standard', '123.00', 'Book2', '2022-02-01 20:28:52', '2022-02-01 20:28:52'),
+(17, 1, 1, 19, 'Book12', 'Book12', 'Book12', NULL, 12, 12, 'Book12', NULL, 12, 0, 'Book12', 'Hardcover', 'Manuscript', 'Medium', 'Standard', '12.00', 'Book12', '2022-02-01 20:56:14', '2022-02-02 04:00:44');
 
 -- --------------------------------------------------------
 
@@ -170,6 +231,14 @@ CREATE TABLE `genres` (
   `name` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
+--
+-- Dumping data for table `genres`
+--
+
+INSERT INTO `genres` (`id`, `name`) VALUES
+(3, 'Test'),
+(5, 'Test4');
+
 -- --------------------------------------------------------
 
 --
@@ -183,6 +252,36 @@ CREATE TABLE `images` (
   `uploaded_at` datetime DEFAULT NULL,
   `isGallery` bit(1) NOT NULL DEFAULT b'1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `images`
+--
+
+INSERT INTO `images` (`id`, `path`, `title`, `uploaded_at`, `isGallery`) VALUES
+(1, 'assets/uploads/images/', 'Book4_Update_', '2022-02-01 19:22:04', b'1'),
+(2, 'assets/uploads/images/', '_Update_', '2022-02-01 20:04:29', b'1'),
+(3, 'assets/uploads/images/', 'Book9_Update_Screenshot (11).png', '2022-02-01 20:06:04', b'1'),
+(4, 'assets/uploads/images/', 'Book25_Update_Screenshot (11).png', '2022-02-01 20:07:41', b'1'),
+(5, 'assets/uploads/images/', 'Book25_Update_Screenshot (11).png', '2022-02-01 20:09:19', b'1'),
+(6, 'assets/uploads/images/', '_Update_', '2022-02-01 20:12:00', b'1'),
+(7, 'assets/uploads/images/', 'Book25_Update_Screenshot (12).png', '2022-02-01 20:12:35', b'1'),
+(8, 'assets/uploads/images/', 'Book25_Update_Screenshot (12).png', '2022-02-01 20:13:24', b'1'),
+(9, 'assets/uploads/images/', 'Book25_Update_Screenshot (12).png', '2022-02-01 20:13:37', b'1'),
+(10, 'assets/uploads/images/', 'Book25_Update_Screenshot (12).png', '2022-02-01 20:16:12', b'1'),
+(11, 'assets/uploads/images/', 'Book25_Update_Screenshot (12).png', '2022-02-01 20:16:15', b'1'),
+(12, 'assets/uploads/images/', 'Book25_Update_Screenshot (12).png', '2022-02-01 20:16:46', b'1'),
+(13, '../../assets/uploads/images/', 'Book25_Update_Screenshot (12).png', '2022-02-01 20:18:35', b'1'),
+(14, './../assets/uploads/images/', 'Book25_Update_Screenshot (12).png', '2022-02-01 20:18:50', b'1'),
+(15, './../assets/uploads/images/', 'Book25_Update_Screenshot (12).png', '2022-02-01 20:21:13', b'1'),
+(16, 'assets/uploads/images/', 'Book25_Update_Screenshot (12).png', '2022-02-01 20:27:38', b'1'),
+(17, 'assets/uploads/images/', 'Book25_Update_Screenshot (12).png', '2022-02-01 20:28:00', b'1'),
+(18, 'assets/uploads/images/', 'Book25_Update_Screenshot (12).png', '2022-02-01 20:28:52', b'1'),
+(19, 'assets/uploads/images/', 'Book129727Screenshot (9).png', '2022-02-02 04:00:44', b'1'),
+(20, 'assets/uploads/images/', 'title159069abstract-1208053_1920.jpg', '2022-02-01 21:08:55', b'1'),
+(21, 'assets/uploads/images/', 'title1261234abstract-1208053_1920.jpg', '2022-02-02 02:48:13', b'1'),
+(22, 'assets/uploads/images/', 'title1957309abstract-1208053_1920.jpg', '2022-02-02 03:27:18', b'1'),
+(23, 'assets/uploads/images/', 'title1753499223358331_10159081999003930_1325450087255890439_n.jpg', '2022-02-02 03:28:29', b'1'),
+(24, 'assets/uploads/images/', 'title1288Screenshot (9).png', '2022-02-02 04:08:15', b'1');
 
 -- --------------------------------------------------------
 
@@ -201,6 +300,13 @@ CREATE TABLE `issues` (
   `isLost` bit(1) NOT NULL DEFAULT b'0',
   `penalty` decimal(5,2) DEFAULT '0.00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `issues`
+--
+
+INSERT INTO `issues` (`id`, `userId`, `bookId`, `requestId`, `issueDate`, `expiryDate`, `returnDate`, `isLost`, `penalty`) VALUES
+(1, 1, 1, 1, '2022-02-04', '2022-02-01', '2022-02-04', b'0', '5.00');
 
 -- --------------------------------------------------------
 
@@ -274,18 +380,6 @@ CREATE TABLE `pages` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `passwordconfirmation`
---
-
-CREATE TABLE `passwordconfirmation` (
-  `email` varchar(255) NOT NULL,
-  `hash` varchar(255) NOT NULL,
-  `validDateTime` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `permissions`
 --
 
@@ -342,6 +436,13 @@ CREATE TABLE `publishers` (
   `name` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
+--
+-- Dumping data for table `publishers`
+--
+
+INSERT INTO `publishers` (`id`, `name`) VALUES
+(1, 'Test');
+
 -- --------------------------------------------------------
 
 --
@@ -356,6 +457,13 @@ CREATE TABLE `requests` (
   `notes` longtext COMMENT 'Request notes',
   `creationDate` date NOT NULL COMMENT 'Request creation date'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `requests`
+--
+
+INSERT INTO `requests` (`id`, `userId`, `bookId`, `status`, `notes`, `creationDate`) VALUES
+(1, 1, 1, 'Accepted', '', '2022-02-04');
 
 -- --------------------------------------------------------
 
@@ -415,6 +523,14 @@ CREATE TABLE `series` (
   `isComplete` bit(1) NOT NULL DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
+--
+-- Dumping data for table `series`
+--
+
+INSERT INTO `series` (`id`, `name`, `isComplete`) VALUES
+(1, 'Admin', b'0'),
+(2, 'Test', b'0');
+
 -- --------------------------------------------------------
 
 --
@@ -473,7 +589,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `roleId`, `email`, `password`, `firstName`, `middleName`, `lastName`, `isActive`, `phone`, `address`, `gender`, `photoId`, `created_at`, `updated_at`) VALUES
-(1, 1, 'admin@mail.com', '0b4449abb7c8850fa5e5b560aadb00d0827261dc', 'Admin', NULL, NULL, b'1', NULL, NULL, 'Male', NULL, '2022-01-03 00:52:41', '2022-01-03 00:52:41');
+(1, 1, 'admin@mail.com', '0b4449abb7c8850fa5e5b560aadb00d0827261dc', 'Admin', '', 'Admin', b'1', '12345678900', 'Multan', 'Male', NULL, '2022-01-03 00:52:41', '2022-01-03 00:52:41'),
+(3, 2, 'test@mail.com', '0b4449abb7c8850fa5e5b560aadb00d0827261dc', 'Test1', '', 'Test', b'1', '12345798000', '', 'Male', NULL, '2022-02-01 14:16:44', '2022-02-01 14:16:44');
 
 --
 -- Indexes for dumped tables
@@ -605,14 +722,6 @@ ALTER TABLE `pages`
   ADD KEY `PAGE_USER_idx` (`userId`);
 
 --
--- Indexes for table `passwordconfirmation`
---
-ALTER TABLE `passwordconfirmation`
-  ADD PRIMARY KEY (`email`),
-  ADD UNIQUE KEY `email_UNIQUE` (`email`),
-  ADD UNIQUE KEY `hash_UNIQUE` (`hash`);
-
---
 -- Indexes for table `permissions`
 --
 ALTER TABLE `permissions`
@@ -715,7 +824,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `authors`
 --
 ALTER TABLE `authors`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `bindings`
@@ -727,7 +836,7 @@ ALTER TABLE `bindings`
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -751,19 +860,19 @@ ALTER TABLE `emailnotifications`
 -- AUTO_INCREMENT for table `genres`
 --
 ALTER TABLE `genres`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `issues`
 --
 ALTER TABLE `issues`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Order ID';
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Order ID', AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `languages`
@@ -799,13 +908,13 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `publishers`
 --
 ALTER TABLE `publishers`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `requests`
 --
 ALTER TABLE `requests`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Request ID';
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Request ID', AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `reviews`
@@ -817,13 +926,13 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `series`
 --
 ALTER TABLE `series`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `staticshortcodes`
@@ -841,7 +950,7 @@ ALTER TABLE `usermessages`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
