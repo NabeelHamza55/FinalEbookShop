@@ -73,7 +73,8 @@ $list = fetchBooks();
                                 $row = mysqli_num_rows($result);
                                 if ($row > 0) {
                                     $image = mysqli_fetch_assoc($result); ?>
-                        <img src="<?= './../'.$image['path'].'/'.$image['title'] ?>" alt="" class="img-thumbnail">
+                        <img style="width: 150px;" src="<?= './../'.$image['path'].'/'.$image['title'] ?>" alt=""
+                            class="img-thumbnail">
                         <?php
                                 } 
                             }else {

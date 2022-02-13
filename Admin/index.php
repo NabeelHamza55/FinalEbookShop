@@ -3,7 +3,6 @@ $title = 'Dashboard';
 include('./components/HTML_Start.php');
 include('./components/header.php');
 ?>
-
 <h1 class="mt-4">Dashboard</h1>
 <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item active">Dashboard</li>
@@ -50,4 +49,4 @@ include('./components/header.php');
 <?php
 include('./components/footer.php');
 include('./components/HTML_End.php');
-  ?>
+?>
