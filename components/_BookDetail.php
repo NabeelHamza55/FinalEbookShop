@@ -64,6 +64,18 @@
                         Book</button>
                 </div>
             </form>
+            <?php 
+            if (!empty($book['pdf_id'])) {
+                $pdfID = $book['pdf_id'];
+                $pdfQuery = "SELECT * FROM book_pdf WHERE id = $pdfID";
+                $pdfResult = mysqli_query($db, $pdfQuery);
+                $pdf = mysqli_fetch_assoc($pdfResult);
+                ?>
+            <a href="./<?= $pdf['pdf']?>" class="btn btn-primary">Download Book PDF</a><span>&nbsp; Size:
+                <?= number_format($pdf['pdfSize']/1024, '2')." MB"; ?></span>
+            <?php
+            }
+            ?>
         </div>
     </div>
     <div class="row">
