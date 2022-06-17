@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 04, 2022 at 02:08 AM
+-- Generation Time: Mar 02, 2022 at 07:22 PM
 -- Server version: 8.0.26
 -- PHP Version: 7.4.19
 
@@ -29,19 +29,19 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `authors` (
   `id` int UNSIGNED NOT NULL,
-  `firstName` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `lastName` varchar(45) DEFAULT NULL,
-  `description` longtext,
+  `firstName` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lastName` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` longtext COLLATE utf8_unicode_ci,
   `photoId` int UNSIGNED DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `authors`
 --
 
 INSERT INTO `authors` (`id`, `firstName`, `lastName`, `description`, `photoId`) VALUES
-(1, 'Bill', 'Gates', 'Test', NULL),
-(8, 'Test', 'Test', 'Test ', NULL);
+(9, 'Admin', 'Admin', 'Nill', NULL),
+(10, 'Test', 'Test', 'Nill', NULL);
 
 -- --------------------------------------------------------
 
@@ -51,8 +51,8 @@ INSERT INTO `authors` (`id`, `firstName`, `lastName`, `description`, `photoId`) 
 
 CREATE TABLE `bindings` (
   `id` int UNSIGNED NOT NULL,
-  `name` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  `name` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -63,24 +63,18 @@ CREATE TABLE `bindings` (
 CREATE TABLE `bookauthors` (
   `bookId` int UNSIGNED NOT NULL,
   `authorId` int UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `bookauthors`
 --
 
 INSERT INTO `bookauthors` (`bookId`, `authorId`) VALUES
-(1, 1),
-(1, 1),
-(8, 1),
-(10, 1),
-(11, 1),
-(12, 8),
-(13, 1),
-(14, 1),
-(15, 1),
-(16, 1),
-(17, 1);
+(18, 10),
+(19, 10),
+(20, 9),
+(21, 9),
+(22, 9);
 
 -- --------------------------------------------------------
 
@@ -91,23 +85,18 @@ INSERT INTO `bookauthors` (`bookId`, `authorId`) VALUES
 CREATE TABLE `bookgenres` (
   `bookId` int UNSIGNED NOT NULL,
   `genreId` int UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `bookgenres`
 --
 
 INSERT INTO `bookgenres` (`bookId`, `genreId`) VALUES
-(7, 3),
-(8, 3),
-(10, 3),
-(11, 3),
-(12, 3),
-(13, 3),
-(14, 3),
-(15, 3),
-(16, 3),
-(17, 3);
+(18, 6),
+(19, 7),
+(20, 6),
+(21, 7),
+(22, 6);
 
 -- --------------------------------------------------------
 
@@ -118,7 +107,7 @@ INSERT INTO `bookgenres` (`bookId`, `genreId`) VALUES
 CREATE TABLE `bookreviews` (
   `bookId` int UNSIGNED NOT NULL,
   `reviewId` int UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -131,46 +120,91 @@ CREATE TABLE `books` (
   `seriesId` int UNSIGNED DEFAULT NULL COMMENT 'серия книг',
   `publisherId` int UNSIGNED DEFAULT NULL COMMENT 'издательство',
   `coverId` int UNSIGNED DEFAULT NULL,
-  `title` varchar(255) DEFAULT NULL COMMENT 'название на русском',
-  `subtitle` varchar(150) DEFAULT NULL COMMENT 'Book subtitle',
-  `ISBN10` varchar(10) DEFAULT NULL,
-  `ISBN13` varchar(13) DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'название на русском',
+  `subtitle` varchar(150) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Book subtitle',
+  `ISBN10` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ISBN13` varchar(13) COLLATE utf8_unicode_ci DEFAULT NULL,
   `publishingYear` int DEFAULT NULL COMMENT 'Publishing year and month',
-  `pages` int DEFAULT NULL COMMENT 'страницы',
-  `description` longtext COMMENT 'описание',
-  `notes` varchar(500) DEFAULT NULL COMMENT 'Book notes',
+  `pages` int UNSIGNED DEFAULT NULL COMMENT 'страницы',
+  `description` longtext COLLATE utf8_unicode_ci COMMENT 'описание',
+  `notes` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Book notes',
   `quantity` int NOT NULL DEFAULT '0' COMMENT 'Number of copies',
   `actualQuantity` int NOT NULL DEFAULT '0' COMMENT 'Actual number of book copies that can be issued right now',
-  `edition` varchar(150) DEFAULT NULL COMMENT 'Edition of the book',
-  `binding` enum('Hardcover','Softcover') DEFAULT 'Hardcover' COMMENT 'переплет',
-  `physicalForm` enum('Book','Manuscript','Journal','CD/DVD','Other') DEFAULT 'Book' COMMENT 'Physical form of book',
-  `size` enum('Medium','Large','Huge','Small','Tiny') DEFAULT 'Medium' COMMENT 'Book size',
-  `type` enum('Standard','Digital') DEFAULT 'Standard' COMMENT 'Type of book',
+  `edition` varchar(150) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Edition of the book',
+  `binding` enum('Hardcover','Softcover') COLLATE utf8_unicode_ci DEFAULT 'Hardcover' COMMENT 'переплет',
+  `physicalForm` enum('Book','Manuscript','Journal','CD/DVD','Other') COLLATE utf8_unicode_ci DEFAULT 'Book' COMMENT 'Physical form of book',
+  `size` enum('Medium','Large','Huge','Small','Tiny') COLLATE utf8_unicode_ci DEFAULT 'Medium' COMMENT 'Book size',
+  `type` enum('Standard','Digital') COLLATE utf8_unicode_ci DEFAULT 'Standard' COMMENT 'Type of book',
+  `pdf_id` int DEFAULT NULL,
   `price` decimal(10,2) DEFAULT NULL COMMENT 'Book price',
-  `language` varchar(45) DEFAULT NULL COMMENT 'Language of the book',
+  `language` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Language of the book',
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Last update time',
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `books`
 --
 
-INSERT INTO `books` (`id`, `seriesId`, `publisherId`, `coverId`, `title`, `subtitle`, `ISBN10`, `ISBN13`, `publishingYear`, `pages`, `description`, `notes`, `quantity`, `actualQuantity`, `edition`, `binding`, `physicalForm`, `size`, `type`, `price`, `language`, `created_at`, `updated_at`) VALUES
-(1, 2, 1, 24, 'title1', 'subTitle1', 'isbn1', NULL, 21111, 1235, 'description', NULL, 1235, 0, 'edition1', 'Softcover', 'Manuscript', 'Medium', 'Standard', '125.00', 'langa', '2022-01-26 14:02:43', '2022-02-02 04:08:15'),
-(3, 1, 1, NULL, 'Test', 'Test', 'Test', NULL, 2111, 111, 'Test', NULL, 11, 0, 'Test', 'Hardcover', 'Book', 'Medium', 'Standard', '12.00', 'Test', '2022-01-26 14:08:30', '2022-02-02 02:47:37'),
-(4, 1, 1, NULL, 'Book', 'Book', 'Book', NULL, 2111, 111, 'Book', NULL, 1, 0, 'Book', 'Hardcover', 'Book', 'Medium', 'Standard', '123.00', 'Test', '2022-01-26 14:11:40', '2022-01-26 14:11:40'),
-(6, 1, 1, NULL, 'Book2', 'Book2', 'Book2', NULL, 2, 111, 'Book2', NULL, 1, 0, 'Book2', 'Hardcover', 'CD/DVD', 'Medium', 'Standard', '123.00', 'Test', '2022-01-26 22:36:44', '2022-01-26 22:36:44'),
-(7, 1, 1, NULL, 'genre', 'genre', 'genre', NULL, 2111, 111, 'genre', NULL, 1, 0, 'genre', 'Softcover', 'Manuscript', 'Medium', 'Standard', '123.00', 'Test', '2022-01-26 22:41:06', '2022-01-26 22:41:06'),
-(8, 1, 1, NULL, 'Book5', 'Book2', 'Book2', NULL, 2111, 111, 'Book2', NULL, 8, 0, 'Test', 'Softcover', 'Manuscript', 'Medium', 'Standard', '12.00', 'Book2', '2022-02-01 19:12:13', '2022-02-02 03:21:52'),
-(10, 1, 1, NULL, 'Book4', 'Book4', 'Book4', NULL, 4, 111, 'Book4', NULL, 5, 0, 'Book4', 'Hardcover', 'Book', 'Medium', 'Standard', '123.00', 'Book4', '2022-02-01 19:42:34', '2022-02-02 03:11:20'),
-(11, 2, 1, NULL, 'book9', 'Book9', 'Book9', NULL, 2111, 111, '', NULL, 10, 0, 'Book9', 'Hardcover', 'Book', 'Medium', 'Standard', '123.00', 'Book1', '2022-02-01 19:46:00', '2022-02-02 03:27:09'),
-(12, 2, 1, NULL, 'Book9', 'Book9', 'Book9', NULL, 2111, 111, 'Book9', NULL, 9, 0, 'Test', 'Softcover', 'Book', 'Medium', 'Standard', '123.00', 'Book1', '2022-02-01 19:48:33', '2022-02-02 03:00:01'),
-(13, 2, 1, NULL, 'Book9', 'Book9', 'Book9', NULL, 2111, 111, 'Book9', NULL, 3, 0, 'Book', 'Hardcover', 'Book', 'Medium', 'Standard', '123.00', 'Test', '2022-02-01 19:49:26', '2022-02-01 19:49:26'),
-(14, 1, 1, NULL, 'Book9', 'Book9', 'Book9', NULL, 2111, 111, 'Book9', NULL, 3, 0, 'edition1', 'Hardcover', 'Book', 'Medium', 'Standard', '123.00', 'Test', '2022-02-01 19:52:22', '2022-02-01 19:52:22'),
-(15, 1, 1, NULL, 'Book9', 'Book9', 'Book9', NULL, 2111, 9, 'Book9', NULL, 9, 0, 'Book9', 'Hardcover', 'Book', 'Medium', 'Standard', '9.00', 'Book9', '2022-02-01 20:06:04', '2022-02-01 20:06:04'),
-(16, 1, 1, 18, 'Book25', 'Book25', 'Book25', NULL, 2111, 111, '', NULL, 8, 0, 'Book9', 'Hardcover', 'Manuscript', 'Medium', 'Standard', '123.00', 'Book2', '2022-02-01 20:28:52', '2022-02-01 20:28:52'),
-(17, 1, 1, 19, 'Book12', 'Book12', 'Book12', NULL, 12, 12, 'Book12', NULL, 12, 0, 'Book12', 'Hardcover', 'Manuscript', 'Medium', 'Standard', '12.00', 'Book12', '2022-02-01 20:56:14', '2022-02-02 04:00:44');
+INSERT INTO `books` (`id`, `seriesId`, `publisherId`, `coverId`, `title`, `subtitle`, `ISBN10`, `ISBN13`, `publishingYear`, `pages`, `description`, `notes`, `quantity`, `actualQuantity`, `edition`, `binding`, `physicalForm`, `size`, `type`, `pdf_id`, `price`, `language`, `created_at`, `updated_at`) VALUES
+(18, 1, 1, 25, 'Test', 'Test', 'Test', NULL, 2005, 111, 'Test', NULL, 5, 0, 'edition1', 'Hardcover', 'Book', 'Medium', 'Digital', NULL, '10.00', 'Test', '2022-02-11 17:29:30', '2022-02-11 17:49:12'),
+(19, 1, 1, 26, 'Test', 'Test', 'Test', NULL, 2111, 111, 'Test', NULL, 3, 0, 'Test', 'Hardcover', 'CD/DVD', 'Medium', 'Standard', NULL, '123.00', 'Test', '2022-02-11 17:33:17', '2022-02-11 17:33:37'),
+(20, 1, 1, NULL, 'Test', '', '', NULL, 2111, 0, '', NULL, 0, 0, '', 'Hardcover', 'Book', 'Medium', 'Digital', 30, '0.00', '', '2022-02-13 23:49:31', '2022-02-13 23:49:31'),
+(21, 1, 1, 27, 'With Image', '', '', NULL, 2111, 0, '', NULL, 0, 0, '', 'Hardcover', 'Book', 'Medium', 'Standard', NULL, '0.00', '', '2022-02-13 23:50:16', '2022-02-13 23:50:16'),
+(22, 1, 1, 28, 'with null', 'with null', '', NULL, 2111, 0, '', NULL, 0, 0, '', 'Hardcover', 'Book', 'Medium', 'Digital', 35, '0.00', '', '2022-02-13 23:54:43', '2022-02-14 00:52:19');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `book_pdf`
+--
+
+CREATE TABLE `book_pdf` (
+  `id` int NOT NULL,
+  `pdf` varchar(2555) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `pdfSize` double DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `book_pdf`
+--
+
+INSERT INTO `book_pdf` (`id`, `pdf`, `pdfSize`, `created_at`, `updated_at`) VALUES
+(3, 'Admin/assets/uploads/PDF/_Bitzstudio_ Furama Web Service Interface Specification_20211028.pdf', 267.5498046875, '2022-02-13 18:24:44', '2022-02-13 18:24:44'),
+(4, 'Admin/assets/uploads/PDF/_Bitzstudio_ Furama Web Service Interface Specification_20211028.pdf', 267.5498046875, '2022-02-13 18:25:16', '2022-02-13 18:25:16'),
+(5, 'Admin/assets/uploads/PDF/_Bitzstudio_ Furama Web Service Interface Specification_20211028.pdf', 267.5498046875, '2022-02-13 18:25:25', '2022-02-13 18:25:25'),
+(6, 'Admin/assets/uploads/PDF/_Bitzstudio_ Furama Web Service Interface Specification_20211028.pdf', 267.5498046875, '2022-02-13 18:32:52', '2022-02-13 18:32:52'),
+(7, 'Admin/assets/uploads/PDF/_Bitzstudio_ Furama Web Service Interface Specification_20211028.pdf', 267.5498046875, '2022-02-13 18:33:24', '2022-02-13 18:33:24'),
+(8, 'Admin/assets/uploads/PDF/_Bitzstudio_ Furama Web Service Interface Specification_20211028.pdf', 267.5498046875, '2022-02-13 18:33:36', '2022-02-13 18:33:36'),
+(9, 'Admin/assets/uploads/PDF/_Bitzstudio_ Furama Web Service Interface Specification_20211028.pdf', 267.5498046875, '2022-02-13 18:34:09', '2022-02-13 18:34:09'),
+(10, 'Admin/assets/uploads/PDF/_Bitzstudio_ Furama Web Service Interface Specification_20211028.pdf', 267.5498046875, '2022-02-13 18:34:14', '2022-02-13 18:34:14'),
+(11, 'Admin/assets/uploads/PDF/_Bitzstudio_ Furama Web Service Interface Specification_20211028.pdf', 267.5498046875, '2022-02-13 18:35:44', '2022-02-13 18:35:44'),
+(12, 'Admin/assets/uploads/PDF/_Bitzstudio_ Furama Web Service Interface Specification_20211028.pdf', 267.5498046875, '2022-02-13 18:36:51', '2022-02-13 18:36:51'),
+(13, 'Admin/assets/uploads/PDF/_Bitzstudio_ Furama Web Service Interface Specification_20211028.pdf', 267.5498046875, '2022-02-13 18:37:03', '2022-02-13 18:37:03'),
+(14, 'Admin/assets/uploads/PDF/_Bitzstudio_ Furama Web Service Interface Specification_20211028.pdf', 267.5498046875, '2022-02-13 18:37:21', '2022-02-13 18:37:21'),
+(15, 'Admin/assets/uploads/PDF/_Bitzstudio_ Furama Web Service Interface Specification_20211028.pdf', 267.5498046875, '2022-02-13 18:39:13', '2022-02-13 18:39:13'),
+(16, 'Admin/assets/uploads/PDF/_Bitzstudio_ Furama Web Service Interface Specification_20211028.pdf', 267.5498046875, '2022-02-13 18:39:29', '2022-02-13 18:39:29'),
+(17, 'Admin/assets/uploads/PDF/_Bitzstudio_ Furama Web Service Interface Specification_20211028.pdf', 267.5498046875, '2022-02-13 18:40:02', '2022-02-13 18:40:02'),
+(18, 'Admin/assets/uploads/PDF/_Bitzstudio_ Furama Web Service Interface Specification_20211028.pdf', 267.5498046875, '2022-02-13 18:40:33', '2022-02-13 18:40:33'),
+(19, 'Admin/assets/uploads/PDF/_Bitzstudio_ Furama Web Service Interface Specification_20211028.pdf', 267.5498046875, '2022-02-13 18:41:53', '2022-02-13 18:41:53'),
+(20, 'Admin/assets/uploads/PDF/_Bitzstudio_ Furama Web Service Interface Specification_20211028.pdf', 267.5498046875, '2022-02-13 18:42:03', '2022-02-13 18:42:03'),
+(21, 'Admin/assets/uploads/PDF/_Bitzstudio_ Furama Web Service Interface Specification_20211028.pdf', 267.5498046875, '2022-02-13 18:42:29', '2022-02-13 18:42:29'),
+(22, 'Admin/assets/uploads/PDF/_Bitzstudio_ Furama Web Service Interface Specification_20211028.pdf', 267.5498046875, '2022-02-13 18:44:38', '2022-02-13 18:44:38'),
+(23, 'Admin/assets/uploads/PDF/_Bitzstudio_ Furama Web Service Interface Specification_20211028.pdf', 267.5498046875, '2022-02-13 18:45:01', '2022-02-13 18:45:01'),
+(24, 'Admin/assets/uploads/PDF/_Bitzstudio_ Furama Web Service Interface Specification_20211028.pdf', 267.5498046875, '2022-02-13 18:45:35', '2022-02-13 18:45:35'),
+(25, 'Admin/assets/uploads/PDF/_Bitzstudio_ Furama Web Service Interface Specification_20211028.pdf', 267.5498046875, '2022-02-13 18:45:41', '2022-02-13 18:45:41'),
+(26, 'Admin/assets/uploads/PDF/_Bitzstudio_ Furama Web Service Interface Specification_20211028.pdf', 267.5498046875, '2022-02-13 18:47:03', '2022-02-13 18:47:03'),
+(27, 'Admin/assets/uploads/PDF/_Bitzstudio_ Furama Web Service Interface Specification_20211028.pdf', 267.5498046875, '2022-02-13 18:47:22', '2022-02-13 18:47:22'),
+(28, 'Admin/assets/uploads/PDF/_Bitzstudio_ Furama Web Service Interface Specification_20211028.pdf', 267.5498046875, '2022-02-13 18:47:34', '2022-02-13 18:47:34'),
+(29, 'Admin/assets/uploads/PDF/_Bitzstudio_ Furama Web Service Interface Specification_20211028.pdf', 267.5498046875, '2022-02-13 18:48:06', '2022-02-13 18:48:06'),
+(30, 'Admin/assets/uploads/PDF/_Bitzstudio_ Furama Web Service Interface Specification_20211028.pdf', 267.5498046875, '2022-02-13 18:49:30', '2022-02-13 18:49:30'),
+(31, 'Admin/assets/uploads/PDF/1st-Merit-List-BS-IM-5th-Semester-2021-Self-Supporting-Program-All-Graduates12.pdf', 1150.357421875, '2022-02-13 19:48:18', '2022-02-13 19:48:18'),
+(32, 'Admin/assets/uploads/PDF/1st-Merit-List-BS-IM-5th-Semester-2021-Self-Supporting-Program-All-Graduates12.pdf', 1150.357421875, '2022-02-13 19:51:15', '2022-02-13 19:51:15'),
+(33, 'Admin/assets/uploads/PDF/1st-Merit-List-BS-IM-5th-Semester-2021-Self-Supporting-Program-All-Graduates12.pdf', 1150.357421875, '2022-02-13 19:51:44', '2022-02-13 19:51:44'),
+(34, 'Admin/assets/uploads/PDF/1st-Merit-List-BS-IM-5th-Semester-2021-Self-Supporting-Program-All-Graduates12.pdf', 1150.357421875, '2022-02-13 19:52:00', '2022-02-13 19:52:00'),
+(35, 'Admin/assets/uploads/PDF/1st-Merit-List-BS-IM-5th-Semester-2021-Self-Supporting-Program-All-Graduates12.pdf', 1150.357421875, '2022-02-13 19:52:19', '2022-02-13 19:52:19');
 
 -- --------------------------------------------------------
 
@@ -180,13 +214,13 @@ INSERT INTO `books` (`id`, `seriesId`, `publisherId`, `coverId`, `title`, `subti
 
 CREATE TABLE `categories` (
   `id` int UNSIGNED NOT NULL,
-  `name` varchar(250) NOT NULL DEFAULT 'Noname category',
-  `title` varchar(100) DEFAULT NULL,
-  `url` varchar(250) NOT NULL,
-  `metaTitle` varchar(100) DEFAULT NULL,
-  `metaKeywords` varchar(255) DEFAULT NULL,
-  `metaDescription` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  `name` varchar(250) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Noname category',
+  `title` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `url` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `metaTitle` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `metaKeywords` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `metaDescription` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -196,9 +230,9 @@ CREATE TABLE `categories` (
 
 CREATE TABLE `dynamicshortcodes` (
   `id` int UNSIGNED NOT NULL,
-  `code` varchar(45) DEFAULT NULL,
-  `columnName` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  `code` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `columnName` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -208,17 +242,17 @@ CREATE TABLE `dynamicshortcodes` (
 
 CREATE TABLE `emailnotifications` (
   `id` int NOT NULL,
-  `route` varchar(100) NOT NULL COMMENT 'should be routeName',
+  `route` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'should be routeName',
   `userId` int UNSIGNED NOT NULL,
-  `subject` varchar(255) DEFAULT NULL,
-  `content` longtext,
-  `templateName` varchar(255) DEFAULT NULL,
-  `from` varchar(255) NOT NULL COMMENT 'JSON object {email:Name}',
-  `to` longtext NOT NULL COMMENT 'JSON array of objects {email1:Name1;email2:Name2;...}',
+  `subject` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `content` longtext COLLATE utf8_unicode_ci,
+  `templateName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `from` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT 'JSON object {email:Name}',
+  `to` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT 'JSON array of objects {email1:Name1;email2:Name2;...}',
   `creationDateTime` datetime DEFAULT NULL,
   `updateDateTime` datetime DEFAULT NULL,
   `isEnabled` bit(1) NOT NULL DEFAULT b'0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -228,16 +262,16 @@ CREATE TABLE `emailnotifications` (
 
 CREATE TABLE `genres` (
   `id` int UNSIGNED NOT NULL,
-  `name` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  `name` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `genres`
 --
 
 INSERT INTO `genres` (`id`, `name`) VALUES
-(3, 'Test'),
-(5, 'Test4');
+(6, 'Test'),
+(7, 'admin');
 
 -- --------------------------------------------------------
 
@@ -247,11 +281,11 @@ INSERT INTO `genres` (`id`, `name`) VALUES
 
 CREATE TABLE `images` (
   `id` int UNSIGNED NOT NULL,
-  `path` varchar(300) NOT NULL,
-  `title` varchar(100) DEFAULT NULL,
+  `path` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `uploaded_at` datetime DEFAULT NULL,
   `isGallery` bit(1) NOT NULL DEFAULT b'1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `images`
@@ -281,7 +315,11 @@ INSERT INTO `images` (`id`, `path`, `title`, `uploaded_at`, `isGallery`) VALUES
 (21, 'assets/uploads/images/', 'title1261234abstract-1208053_1920.jpg', '2022-02-02 02:48:13', b'1'),
 (22, 'assets/uploads/images/', 'title1957309abstract-1208053_1920.jpg', '2022-02-02 03:27:18', b'1'),
 (23, 'assets/uploads/images/', 'title1753499223358331_10159081999003930_1325450087255890439_n.jpg', '2022-02-02 03:28:29', b'1'),
-(24, 'assets/uploads/images/', 'title1288Screenshot (9).png', '2022-02-02 04:08:15', b'1');
+(24, 'assets/uploads/images/', 'title1288Screenshot (9).png', '2022-02-02 04:08:15', b'1'),
+(25, 'assets/uploads/images/', 'Test_Update_pexels-trace-hudson-2529973.jpg', '2022-02-11 17:29:30', b'1'),
+(26, 'assets/uploads/images/', 'Test_Update_pexels-jae-park-3802510.jpg', '2022-02-11 17:33:17', b'1'),
+(27, 'assets/uploads/images/', 'With Image_Update_abstract-1208053_1920.jpg', '2022-02-13 23:50:16', b'1'),
+(28, 'assets/uploads/images/', 'with null3092background-1716728_1920.jpg', '2022-02-14 00:45:34', b'1');
 
 -- --------------------------------------------------------
 
@@ -299,14 +337,14 @@ CREATE TABLE `issues` (
   `returnDate` date DEFAULT NULL COMMENT 'Date of return of the book - real return date',
   `isLost` bit(1) NOT NULL DEFAULT b'0',
   `penalty` decimal(5,2) DEFAULT '0.00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `issues`
 --
 
 INSERT INTO `issues` (`id`, `userId`, `bookId`, `requestId`, `issueDate`, `expiryDate`, `returnDate`, `isLost`, `penalty`) VALUES
-(1, 1, 1, 1, '2022-02-04', '2022-02-01', '2022-02-04', b'0', '5.00');
+(2, 1, 19, 2, '2022-02-16', '2022-02-28', NULL, b'0', '0.00');
 
 -- --------------------------------------------------------
 
@@ -316,11 +354,11 @@ INSERT INTO `issues` (`id`, `userId`, `bookId`, `requestId`, `issueDate`, `expir
 
 CREATE TABLE `languages` (
   `id` int UNSIGNED NOT NULL,
-  `name` varchar(25) DEFAULT NULL,
-  `code` varchar(10) DEFAULT NULL,
+  `name` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `code` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   `isActive` bit(1) DEFAULT NULL,
-  `shortCode` varchar(2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  `shortCode` varchar(2) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -332,13 +370,13 @@ CREATE TABLE `menuitems` (
   `id` int UNSIGNED NOT NULL,
   `menuId` int UNSIGNED NOT NULL COMMENT 'ID of menu: 1 - main menu, 2 - left menu, etc.',
   `parentId` int UNSIGNED NOT NULL COMMENT 'Parent menu item (0 - no parent)',
-  `title` varchar(150) NOT NULL COMMENT 'Text to display on menu item',
+  `title` varchar(150) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Text to display on menu item',
   `pageId` int UNSIGNED DEFAULT NULL COMMENT 'Use specified page as menu item (by pageId)',
   `postId` int UNSIGNED DEFAULT NULL,
-  `link` varchar(255) DEFAULT NULL COMMENT 'Link as menu item',
+  `link` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Link as menu item',
   `order` int UNSIGNED DEFAULT NULL COMMENT 'Order number of menu item',
-  `class` varchar(50) DEFAULT NULL COMMENT 'CSS class'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  `class` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'CSS class'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -348,8 +386,8 @@ CREATE TABLE `menuitems` (
 
 CREATE TABLE `menus` (
   `id` int UNSIGNED NOT NULL,
-  `name` varchar(100) NOT NULL COMMENT 'Menu name'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Menu name'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -361,21 +399,21 @@ CREATE TABLE `pages` (
   `id` int UNSIGNED NOT NULL,
   `parentId` int UNSIGNED DEFAULT NULL,
   `userId` int UNSIGNED NOT NULL,
-  `url` varchar(300) DEFAULT NULL,
-  `partialUrl` varchar(100) DEFAULT NULL,
-  `title` varchar(100) DEFAULT NULL,
-  `content` longtext,
-  `metaTitle` varchar(200) DEFAULT NULL,
-  `metaKeywords` varchar(250) DEFAULT NULL,
-  `metaDescription` longtext,
+  `url` varchar(300) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `partialUrl` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `title` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `content` longtext COLLATE utf8_unicode_ci,
+  `metaTitle` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `metaKeywords` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `metaDescription` longtext COLLATE utf8_unicode_ci,
   `imageId` int UNSIGNED DEFAULT NULL,
-  `status` enum('Publish','Future','Pending') DEFAULT 'Pending',
+  `status` enum('Publish','Future','Pending') COLLATE utf8_unicode_ci DEFAULT 'Pending',
   `publishDateTime` datetime DEFAULT NULL,
-  `shortDescription` varchar(100) DEFAULT NULL,
+  `shortDescription` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `creationDateTime` datetime DEFAULT NULL,
   `updateDateTime` datetime DEFAULT NULL,
-  `customTemplate` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  `customTemplate` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -385,10 +423,10 @@ CREATE TABLE `pages` (
 
 CREATE TABLE `permissions` (
   `id` int UNSIGNED NOT NULL,
-  `routeName` varchar(50) NOT NULL,
-  `routeTitle` varchar(100) DEFAULT NULL,
+  `routeName` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `routeTitle` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `isPublic` bit(1) DEFAULT b'0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -399,7 +437,7 @@ CREATE TABLE `permissions` (
 CREATE TABLE `postcategories` (
   `postId` int UNSIGNED NOT NULL,
   `categoryId` int UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -410,20 +448,20 @@ CREATE TABLE `postcategories` (
 CREATE TABLE `posts` (
   `id` int UNSIGNED NOT NULL,
   `userId` int UNSIGNED NOT NULL,
-  `url` varchar(300) NOT NULL,
-  `title` varchar(100) DEFAULT NULL,
-  `secondTitle` varchar(100) DEFAULT NULL,
-  `shortDescription` varchar(250) DEFAULT NULL,
-  `content` longtext,
-  `metaTitle` varchar(200) DEFAULT NULL,
-  `metaKeywords` varchar(250) DEFAULT NULL,
-  `metaDescription` longtext,
+  `url` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `secondTitle` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `shortDescription` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `content` longtext COLLATE utf8_unicode_ci,
+  `metaTitle` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `metaKeywords` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `metaDescription` longtext COLLATE utf8_unicode_ci,
   `imageId` int UNSIGNED DEFAULT NULL,
-  `status` enum('Publish','Future','Pending') DEFAULT 'Pending',
+  `status` enum('Publish','Future','Pending') COLLATE utf8_unicode_ci DEFAULT 'Pending',
   `publishDateTime` datetime DEFAULT NULL,
   `creationDateTime` datetime DEFAULT NULL,
   `updateDateTime` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -433,8 +471,8 @@ CREATE TABLE `posts` (
 
 CREATE TABLE `publishers` (
   `id` int UNSIGNED NOT NULL,
-  `name` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  `name` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `publishers`
@@ -453,17 +491,17 @@ CREATE TABLE `requests` (
   `id` int UNSIGNED NOT NULL COMMENT 'Request ID',
   `userId` int UNSIGNED NOT NULL COMMENT 'User that create request',
   `bookId` int UNSIGNED NOT NULL,
-  `status` enum('Pending','Accepted','Rejected') NOT NULL DEFAULT 'Pending' COMMENT 'Current request status',
-  `notes` longtext COMMENT 'Request notes',
+  `status` enum('Pending','Accepted','Rejected') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Pending' COMMENT 'Current request status',
+  `notes` longtext COLLATE utf8_unicode_ci COMMENT 'Request notes',
   `creationDate` date NOT NULL COMMENT 'Request creation date'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `requests`
 --
 
 INSERT INTO `requests` (`id`, `userId`, `bookId`, `status`, `notes`, `creationDate`) VALUES
-(1, 1, 1, 'Accepted', '', '2022-02-04');
+(2, 1, 19, 'Accepted', '', '2022-02-16');
 
 -- --------------------------------------------------------
 
@@ -474,8 +512,8 @@ INSERT INTO `requests` (`id`, `userId`, `bookId`, `status`, `notes`, `creationDa
 CREATE TABLE `reviews` (
   `id` int UNSIGNED NOT NULL COMMENT 'Review ID',
   `userId` int UNSIGNED NOT NULL COMMENT 'User that created this review',
-  `text` longtext COMMENT 'Content of review'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  `text` longtext COLLATE utf8_unicode_ci COMMENT 'Content of review'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -486,7 +524,7 @@ CREATE TABLE `reviews` (
 CREATE TABLE `rolepermissions` (
   `roleId` int UNSIGNED NOT NULL,
   `permissionId` int UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -496,12 +534,12 @@ CREATE TABLE `rolepermissions` (
 
 CREATE TABLE `roles` (
   `id` int UNSIGNED NOT NULL,
-  `name` varchar(50) NOT NULL COMMENT 'Name of role',
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Name of role',
   `issueDayLimit` int NOT NULL COMMENT 'Issue day limitation',
   `issueBookLimit` int NOT NULL COMMENT 'Issue book limitation',
   `finePerDay` decimal(10,2) NOT NULL COMMENT 'Fine per day after late book return',
   `priority` tinyint UNSIGNED NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `roles`
@@ -519,9 +557,9 @@ INSERT INTO `roles` (`id`, `name`, `issueDayLimit`, `issueBookLimit`, `finePerDa
 
 CREATE TABLE `series` (
   `id` int UNSIGNED NOT NULL,
-  `name` varchar(45) DEFAULT NULL,
+  `name` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `isComplete` bit(1) NOT NULL DEFAULT b'0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `series`
@@ -539,10 +577,10 @@ INSERT INTO `series` (`id`, `name`, `isComplete`) VALUES
 
 CREATE TABLE `staticshortcodes` (
   `id` int UNSIGNED NOT NULL,
-  `code` varchar(45) DEFAULT NULL,
-  `value` mediumtext,
+  `code` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `value` mediumtext COLLATE utf8_unicode_ci,
   `isLongText` bit(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -552,14 +590,14 @@ CREATE TABLE `staticshortcodes` (
 
 CREATE TABLE `usermessages` (
   `id` int UNSIGNED NOT NULL,
-  `name` varchar(150) DEFAULT NULL,
-  `email` varchar(150) DEFAULT NULL,
-  `subject` varchar(100) DEFAULT NULL,
-  `message` longtext,
-  `url` varchar(250) DEFAULT NULL,
+  `name` varchar(150) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(150) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `subject` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `message` longtext COLLATE utf8_unicode_ci,
+  `url` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
   `creationDate` datetime DEFAULT NULL,
   `isViewed` bit(1) DEFAULT b'0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -570,19 +608,19 @@ CREATE TABLE `usermessages` (
 CREATE TABLE `users` (
   `id` int UNSIGNED NOT NULL,
   `roleId` int UNSIGNED NOT NULL COMMENT 'User''s role ID',
-  `email` varchar(50) NOT NULL,
-  `password` varchar(200) NOT NULL,
-  `firstName` varchar(50) DEFAULT NULL,
-  `middleName` varchar(50) DEFAULT NULL,
-  `lastName` varchar(50) DEFAULT NULL,
+  `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `firstName` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `middleName` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lastName` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `isActive` bit(1) NOT NULL DEFAULT b'1' COMMENT 'Is user active or not?',
-  `phone` varchar(45) DEFAULT NULL COMMENT 'User''s phone',
-  `address` varchar(500) DEFAULT NULL COMMENT 'User''s address',
-  `gender` enum('Male','Female') DEFAULT 'Male' COMMENT 'User''s gender',
+  `phone` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'User''s phone',
+  `address` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'User''s address',
+  `gender` enum('Male','Female') COLLATE utf8_unicode_ci DEFAULT 'Male' COMMENT 'User''s gender',
   `photoId` int UNSIGNED DEFAULT NULL COMMENT 'Id of user''s photo',
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `users`
@@ -640,7 +678,14 @@ ALTER TABLE `books`
   ADD UNIQUE KEY `id_UNIQUE` (`id`),
   ADD KEY `BOOK_IMAGE_idx` (`coverId`),
   ADD KEY `BOOK_SERIES_idx` (`seriesId`),
-  ADD KEY `BOOK_PUBLISHER_idx` (`publisherId`);
+  ADD KEY `BOOK_PUBLISHER_idx` (`publisherId`),
+  ADD KEY `pdf_id` (`pdf_id`);
+
+--
+-- Indexes for table `book_pdf`
+--
+ALTER TABLE `book_pdf`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `categories`
@@ -824,7 +869,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `authors`
 --
 ALTER TABLE `authors`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `bindings`
@@ -836,7 +881,13 @@ ALTER TABLE `bindings`
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT for table `book_pdf`
+--
+ALTER TABLE `book_pdf`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -860,19 +911,19 @@ ALTER TABLE `emailnotifications`
 -- AUTO_INCREMENT for table `genres`
 --
 ALTER TABLE `genres`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `issues`
 --
 ALTER TABLE `issues`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Order ID', AUTO_INCREMENT=2;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Order ID', AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `languages`
@@ -914,7 +965,7 @@ ALTER TABLE `publishers`
 -- AUTO_INCREMENT for table `requests`
 --
 ALTER TABLE `requests`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Request ID', AUTO_INCREMENT=2;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Request ID', AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `reviews`
@@ -989,7 +1040,8 @@ ALTER TABLE `bookreviews`
 ALTER TABLE `books`
   ADD CONSTRAINT `BOOK_IMAGE` FOREIGN KEY (`coverId`) REFERENCES `images` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   ADD CONSTRAINT `BOOK_PUBLISHER` FOREIGN KEY (`publisherId`) REFERENCES `publishers` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  ADD CONSTRAINT `BOOK_SERIES` FOREIGN KEY (`seriesId`) REFERENCES `series` (`id`) ON DELETE SET NULL ON UPDATE SET NULL;
+  ADD CONSTRAINT `BOOK_SERIES` FOREIGN KEY (`seriesId`) REFERENCES `series` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  ADD CONSTRAINT `books_ibfk_1` FOREIGN KEY (`pdf_id`) REFERENCES `book_pdf` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Constraints for table `issues`
